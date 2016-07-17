@@ -280,45 +280,45 @@ PICO-8へようこそ！
   できます。キーボードの場合は、カートリッジリストでアイテムが選択されている時にFキーでお気に入り
   登録できます。
 
-	When viewing a list of BBS carts, use the top list item to re-download a list of
-  BBSカートリッジリスト閲覧中は、
-	cartridges. If you are offline, the last downloaded list is displayed, and it is
-	still possible to play any cartridges you have downloaded.
+  BBSのカートリッジリスト閲覧中は、カートリッジのリストを再ダウンロードするためにトップリストを使用
+  できます。オフライン時は、最後にダウンロードされたリストが表示されます。ダウンロード済みのカートリッジ
+  は引き続きプレイ可能です。
 
-	If you have installed PICO-8 on a machine with no internet access, you can also
-	use INSTALL_GAMES to add a small selection of pre-installed BBS carts to your
-	favourites list.
+  インターネット環境のないマシンにPICO-8をインストールした場合も、INSTALL_GAMESコマンドで
+  事前にインストールされているいくつかのBBSカートリッジをお気に入りリストに追加することができます。
 
 
 ============================================================================================
 	エディターモード
 ============================================================================================
 
-	Press escape to toggle between console and editor
-	Click editing mode tabs at top right to switch or press ALT+LEFT/RIGHT
+  コンソールとエディターを切り替えるにはESCキーを押します。
+  編集モードーを切り替えるには、右上の編集モードタブをクリックするか、ALT+左キー/右キーを押して
+  ください。
 
 
-	** WARNING: The second half of the sprite sheet (banks 2 and 3), and the bottom half
-	of the map share the same cartridge space. It's up to you how you use the data, but
+  ** 注意: スプライトシートの後ろ半分(バンク2と3)とマップの後ろ半分はカートリッジの同じ領域を共有して
+  います。そのデータ領域をどう使うかはあなた次第ですが、スプライトシートの後半を編集するとマップデータ
 	be aware that drawing on the second half of the sprite sheet could clobber data on
-	the map and vice versa.
+  が、マップデータの後半を編集するとスプライトシートが破壊されることに注意してください。
 
 
 :: コードエディター
 
-	Hold shift to select (or click and drag with mouse)
-	CTRL-X, C, V to cut copy or paste selected
-	CTRL-Z, Y to undo, redo
-	CTRL-F to search for text
-	CTRL-G to repeat the last search again
-	ALT-UP, DOWN to navigate to the previous, next function
+  シフトキーを押し続ける(またはマウスでドラッグすると)と領域を選択します
+  CTRL-X、C、Vで選択領域をカット、コピー、ペーストします
+  CTRL-Z、Yでアンドゥ(編集の取り消し)とリドゥ(編集の再実行)をします
+  CTRL-Fでテキストを検索します
+  CTRL-Gで最後の検索を繰り返します
+  ALT-UP、DOWNで前後の関数に移動します
 
 	At the bottom right of the code editor you can see how many tokens have been used. One
-	program can have a maximum of 8192 tokens. Each token is a word (e.g. variable name) or
-	operator. Pairs of brackets, and strings count as 1 token. commas, periods, LOCALs, semi-
-	colons, ENDs, and comments are not counted.
+  使用されているトークン数はコードエディターの右下で確認することができます。1つのプログラムは最大
+  8192トークンを使用できます。それぞれのトークンは単語(変数名等)または演算子です。左右括弧のペアや
+  文字列は1トークンとしてカウントされます。カンマ、ピリオド、LOCALキーワード、セミコロン、ENDキーワード、
+  コメントはカウントされません。
 
-	To enter special characters that represent buttons, use SHIFT-L,R,U,D,O,X
+  SHIFT-L、R、U、D、O、Xでボタン用の特殊文字を入力できます。
 
 
 :: スプライトエディター
@@ -328,27 +328,27 @@ PICO-8へようこそ！
 	view into the sprite-sheet, but it is possible to use freeform tools (pan, select) when
 	dealing with larger or oddly sized areas.
 
-	Draw Tool
+	ドローツール
 		Click and drag on the sprite to edit
 		Applies to visible area
 		Hold CTRL to search and replace a colour
 		Use left moust button to select colour
 
-	Stamp Tool
+	スタンプツール
 		Click to stamp whatever is in the
 		Hold LCONTROL to stamp with transparency
 
-	Select Tool // shortcut: LSHIFT or S
+	選択ツール // ショートカット: 左SHIFTまたはSキー
 		Create a selection
 		Enter or click to select none.
 
 		If a pixel-wise selection is not present, many operations are instead applied
 		to a sprite-wise selection. To select sprites, shift-drag in the sprite navigator.
 
-	Pan Tool // shortcut: space
+	パンツール // ショートカット: スペースキー
 		View the spritesheet.
 
-	Fill Tool
+	塗りつぶしツール
 		Fill with the current colour
 		Applies to the current selection
 		If no selection, applies to visible area
@@ -447,7 +447,7 @@ PICO-8へようこそ！
 		Shift-click an instrument, effect, or volume to apply to all notes.
 
 
-	:: Effects
+	:: エフェクト
 
 		0 none
 		1 slide          //  Slide to the next note
@@ -609,7 +609,7 @@ For more details, or to find out about proper Lua, see www.lua.org.
 	-- see also the tables section in the api reference below.
 
 
-:: PICO-8 Shorthand
+:: PICO-8向け簡略表記
 
 	PICO-8 also allows several non-standard, shorter ways to write common patterns.
 
@@ -630,7 +630,7 @@ For more details, or to find out about proper Lua, see www.lua.org.
 	a %= 2  -- equivalent to: a = a % 2
 
 
-	3. != operator
+	3. !=演算子
 
 	Not shorthand, but pico-8 also accepts != instead of ~= for "not equal to"
 
