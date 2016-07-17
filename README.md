@@ -1,2 +1,5 @@
 # pico8-jp
-Japanese manual of PICO-8
+
+A Japanese version of the PICO-8 official manual (pico8.txt).
+
+PICO-8 日本語版マニュアルです。
