@@ -291,7 +291,7 @@ PICO-8へようこそ！
 
 
 ============================================================================================
-	Editor Modes
+	エディターモード
 ============================================================================================
 
 	Press escape to toggle between console and editor
@@ -304,7 +304,7 @@ PICO-8へようこそ！
 	the map and vice versa.
 
 
-:: Code Editor
+:: コードエディター
 
 	Hold shift to select (or click and drag with mouse)
 	CTRL-X, C, V to cut copy or paste selected
@@ -321,7 +321,7 @@ PICO-8へようこそ！
 	To enter special characters that represent buttons, use SHIFT-L,R,U,D,O,X
 
 
-:: Sprite Editor
+:: スプライトエディター
 
 	The sprite editor is designed to be used both for sprite-wise editing and for freeform
 	pixel-level editing. The sprite navigator at the bottom of the screen provides an 8x8-wise
@@ -376,7 +376,7 @@ PICO-8へようこそ！
 		the left (0,1,2..7). See fset() for more information.
 
 
-:: Map Editor
+:: マップエディター
 
 	The pico-8 map is a 128x32 (or 128x64 using shared space) block of 8-bit values.
 	Each value is shown in the editor as a reference to a sprite (0..255), but you can
@@ -392,7 +392,7 @@ PICO-8へようこそ！
 
 
 
-:: Sfx Editor
+:: 効果音エディター
 
 	There are 64 SFX ("sound effects") in a cartridge, used for both sound and music.
 
@@ -461,7 +461,7 @@ PICO-8へようこそ！
 		If the SFX speed is <= 8, arpeggio speeds are halved to 2, 4
 
 
-:: Music Editor
+:: ミュージックエディター
 
 	Music in PICO-8 is controlled by a sequence of 'patterns'. Each pattern is a list of
 	4 numbers indicating which SFX will be played on that channel.
@@ -494,7 +494,7 @@ PICO-8へようこそ！
 
 
 ============================================================================================
-	Lua Syntax Primer
+	Lua入門
 ============================================================================================
 
 PICO-8 programs are written using Lua syntax, but do not use the standard Lua library.
@@ -502,14 +502,14 @@ The following is a brief summary of essential Lua syntax.
 
 For more details, or to find out about proper Lua, see www.lua.org.
 
-:: Comments
+:: コメント
 
 	-- use two hyphens like this to ignore everything until the end of the line
 	--[[ multi-line
 	comments ]]
 
 
-:: Types and assignment
+:: 型と代入
 
 	Types in Lua are numbers, strings, booleans and tables;
 
@@ -527,7 +527,7 @@ For more details, or to find out about proper Lua, see www.lua.org.
 	Dividing by zero evaluates as the largest possible number: 0x7fff.ffff
 
 
-:: Conditionals
+:: 条件分岐
 
 	IF NOT B THEN
 		PRINT("B IS FALSE")
@@ -552,7 +552,7 @@ For more details, or to find out about proper Lua, see www.lua.org.
 	IF (4 <= 4) THEN PRINT("LESS THAN OR EQUAL") END
 	IF (4 > 3) THEN PRINT("MORE THAN") END
 
-:: Loops
+:: ループ
 
 	FOR X=1,5 DO
 		PRINT(X)
@@ -570,7 +570,7 @@ For more details, or to find out about proper Lua, see www.lua.org.
 	FOR X=5,1,-2 DO PRINT(X) END  -- 5,3,1
 
 
-:: Functions and Local Variables
+:: 関数とローカル変数
 
 	Y=0
 	FUNCTION PLUSONE(X)
@@ -581,7 +581,7 @@ For more details, or to find out about proper Lua, see www.lua.org.
 	PRINT(Y)          -- 0
 
 
-:: Tables
+:: テーブル
 
 	In Lua, tables are a collection of key-value pairs where the key and value types can both
 	be mixed. They can be used as arrays by indexing them with integers.
@@ -636,7 +636,7 @@ For more details, or to find out about proper Lua, see www.lua.org.
 
 
 ============================================================================================
-	API
+	APIリファレンス
 ============================================================================================
 
 	PICO-8 is built on the Lua scripting language, but does not include the Lua standard library.
@@ -651,7 +651,7 @@ For more details, or to find out about proper Lua, see www.lua.org.
 
 
 --------------------------------------------------------------------------------------------------------
-	System
+	システム
 --------------------------------------------------------------------------------------------------------
 
 
@@ -730,7 +730,7 @@ printh str
 
 
 --------------------------------------------------------------------------------------------
-	Program Structure
+	プログラム構造
 --------------------------------------------------------------------------------------------
 
 	There are 3 special functions that, if defined by the user, are called during program
@@ -767,7 +767,7 @@ printh str
 
 
 --------------------------------------------------------------------------------------------
-	Graphics
+	グラフィックス
 --------------------------------------------------------------------------------------------
 
 	PICO-8 has a single bank of 128 8x8 sprites, plus another 128 that overlaps with the
@@ -914,7 +914,7 @@ sspr sx sy sw sh dx dy [dw dh] [flip_x] [flip_y]
 
 
 --------------------------------------------------------------------------------------------
-	Tables
+	テーブル
 --------------------------------------------------------------------------------------------
 
 
@@ -982,7 +982,7 @@ pairs t
 
 
 --------------------------------------------------------------------------------------------
-	Input
+	入力
 --------------------------------------------------------------------------------------------
 
 btn [i [p]]
@@ -1008,7 +1008,7 @@ btnp [i [p]]
 
 
 --------------------------------------------------------------------------------------------
-	Audio
+	オーディオ
 --------------------------------------------------------------------------------------------
 
 sfx n [channel [offset]]
@@ -1037,7 +1037,7 @@ music [n [fade_len [channel_mask]]]
 
 
 --------------------------------------------------------------------------------------------------------
-	Map
+	マップ
 --------------------------------------------------------------------------------------------------------
 
 mget x y
@@ -1058,7 +1058,7 @@ map cel_x cel_y sx sy cel_w cel_h [layer]
 	-> draws a 4x2 blocks of cels starting from 0,0 in the map, to the screen at 20,20
 
 --------------------------------------------------------------------------------------------------------
-	Memory
+	メモリ
 --------------------------------------------------------------------------------------------------------
 
 PICO-8 has 3 types of memory:
@@ -1135,7 +1135,7 @@ memset dest_addr val len
 
 
 --------------------------------------------------------------------------------------------------------
-	Math
+	数学
 --------------------------------------------------------------------------------------------------------
 
 max x y
@@ -1201,7 +1201,7 @@ Bitwise operations
 	// shifts are logicial shifts (the sign bit is not shifted)
 
 --------------------------------------------------------------------------------------------------------
-	Custom Menu Items
+	カスタムメニューアイテム
 --------------------------------------------------------------------------------------------------------
 
 menuitem index [label callback]
@@ -1219,7 +1219,7 @@ menuitem index [label callback]
 
 
 --------------------------------------------------------------------------------------------------------
-	Strings
+	文字列
 --------------------------------------------------------------------------------------------------------
 
 	s = "the quick brown fox"
@@ -1241,7 +1241,7 @@ menuitem index [label callback]
 
 
 --------------------------------------------------------------------------------------------
-	Cartridge Data
+	カートリッジデータ
 --------------------------------------------------------------------------------------------
 
 	Each cartidge is able to store 64 numbers (256 bytes) of persistent data
@@ -1291,7 +1291,7 @@ dset index value
 
 
 ------------------------------------------------------------------------------------------------------------
-	VERSION HISTORY
+	バージョン履歴
 ------------------------------------------------------------------------------------------------------------
 
 	v0.1.8
