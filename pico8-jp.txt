@@ -323,99 +323,98 @@ PICO-8へようこそ！
 
 :: スプライトエディター
 
-	The sprite editor is designed to be used both for sprite-wise editing and for freeform
-	pixel-level editing. The sprite navigator at the bottom of the screen provides an 8x8-wise
-	view into the sprite-sheet, but it is possible to use freeform tools (pan, select) when
-	dealing with larger or oddly sized areas.
+  スプライトエディターではスプライト単位と自由なピクセル単位の両方の編集ができます。画面下部のスプライト
+  ナビゲーターでスプライトシートの8x8単位での閲覧ができます。それより大きなサイズや奇数のサイズを扱いたい
+  場合は、自由形状ツール(パン、選択)を使うことも可能です。
 
 	ドローツール
-		Click and drag on the sprite to edit
-		Applies to visible area
-		Hold CTRL to search and replace a colour
-		Use left moust button to select colour
+    スプライト上でクリックとドラッグで編集します。
+    見える範囲に適用されます。
+    CTRLを押しながらクリックすると同じ色を探して置き換えます。
+    色を選択するには左マウスボタンを使います。
 
 	スタンプツール
-		Click to stamp whatever is in the
-		Hold LCONTROL to stamp with transparency
+    ？どこでもクリックするとスタンプを押します。
+    LCONTROLを押しつづケルト透明色つきのスタンプを押します。
 
 	選択ツール // ショートカット: 左SHIFTまたはSキー
-		Create a selection
-		Enter or click to select none.
+    選択領域を作成する
+    Enterまたはクリックで非選択状態になります。
 
-		If a pixel-wise selection is not present, many operations are instead applied
-		to a sprite-wise selection. To select sprites, shift-drag in the sprite navigator.
+    ピクセル単位の選択でない場合は、多数の操作がスプライト単位の選択領域に適用されます。
+    スプライトを選択するにはスプライトナビゲーターでシフトを押しながらドラッグします。
 
 	パンツール // ショートカット: スペースキー
-		View the spritesheet.
+    スプライトシートを閲覧します。
 
 	塗りつぶしツール
-		Fill with the current colour
-		Applies to the current selection
-		If no selection, applies to visible area
+    現在のカラーで塗りつぶします。
+    現在の選択領域に適用されます。
+    どこも選択されていなければ、見える範囲に適用されます。
 
-	Extra keys
-		CTRL-Z to undo // single step only in 0.2.0
-		CTRL-C to copy selected area or selected sprites
-		CTRL-V to paste to current sprite location
-		Q,W to switch to previous/next sprite
-		1,2 to switch to previous/next colour
-		Tab to toggle fullscreen view
-		Mousewheel to zoom (centered in fullscreen)
+	特殊キー
+		CTRL-Zでアンドゥします // 0.2.0では1度だけ有効です
+		CTRL-Cで選択した領域またはスプライトをコピーします
+		CTRL-Vで現在のスプライトの位置にペーストします
+		QキーとWキーでスプライトを前と後に切り替えます
+		1キーと2キーで色を前と後に切り替えます
+    Tabキーでフルスクリーンビューを切り替えます
+    マウスホイールでズームします(フルクリーンでは中央中心になります)
 
 
-	Operations on selected area or selected sprites:
-		f to flip
-		v to flip vertically
-		r to rotate (must be square selection)
-		Cursor keys to move (loops if sprite selection)
+	選択した領域またはスプライトの操作方法
+		fで左右反転
+		vで上下反転
+		rで回転(領域が正方形である必要があります)
+		カーソルキーで移動(スプライト選択時はループします)
 
-	Sprite flags
-		The 8 coloured circles are sprite flags for the current sprite.
-		Each one can be true (on) or false (off), and are accessed by
-		using the FSET and FGET functions. They are indexed from 0, from
-		the left (0,1,2..7). See fset() for more information.
+	スプライトフラグ
+    8色の円は現在のスプライトのスプライトフラグです。
+    それぞれのフラグはtrue(オン)かfalse(オフ)にでき、FSETとFGET関数でアクセスされます。
+    スプライトフラグは0から番号が振られ、左から(0,1,2..7)となります。詳細はfset()の
+    説明をご覧ください。
 
 
 :: マップエディター
 
-	The pico-8 map is a 128x32 (or 128x64 using shared space) block of 8-bit values.
-	Each value is shown in the editor as a reference to a sprite (0..255), but you can
-	of course use the data to represent whatever you like.
+  PICO-8のマップは8ビットの値を持つ128x32(または共有領域を使った128x64の)のブロックです。
+  それぞれの値はスプライトへの参照(0-255)として表示されますが、あなたが望むどんなものを表すデータ
+  としてでも使用できます。
 
-	The tools are similar to the ones used in sprite editing mode. Select a sprite
-	and click and drag to paint values into the map.
+  ツールはスプライト編集モードで使われているものと同じです。スプライトを選択してクリックやドラッグ
+  で値をマップにペイントしてください。
 
-	To draw multiple sprites, select from sprite navigator with shift+drag
-	To copy a block of values, use the selection tool and then stamp tool to paste
-	To pan around the map, use the pan tool or hold space
-	Q,W to switch to previous/next sprite
+  複数のスプライトを描画するにはスプライトナビゲーターからシフトを押しながら選択します。
+  値のブロックをコピーするには選択ツールを使った後にスタンプツールでペーストします。
+  マップをパンするにはパンツールを使うかスペースを押し続けます。
+  QキーとWキーでスプライトを前と後に移動します。
 
 
 
 :: 効果音エディター
 
-	There are 64 SFX ("sound effects") in a cartridge, used for both sound and music.
+  カートリッジ1つにつき効果音と音楽の両方で使用する64のSFX(サウンドエフェクト)があります。
 
-	Each SFX has 32 notes, and each note has:
-		A frequency   (C0..C5)
-		An instrument (0..7)
-		A volume      (0..7)
-		An effect     (0..7)
+  SFXは32ノートで構成され、それぞれのノートは以下の要素を持っています。
+		周波数 frequency  (C0-C5)
+		音色   instrument (0-7)
+		音量   volume     (0-7)
+		効果   effect     (0-7)
 
-	Each SFX also has these properties:
+  SFXは以下のプロパティも持っています。
 
-		A play speed (SPD) : the number of 'ticks' to play each note for.
-			// This means that 1 is fastest, 3 is 3x as slow, etc.
+    再生速度(SPD) : ノート再生する長さの'ticks'数
+      // 1が最短で3は3倍長くなります
 
-		Loop start and end : this is the note index to loop back and to
-			// Looping is turned off when the start index >= end index
+    ループ開始と終了位置 : ループ時に戻ってくる位置とループ再生する終端位置です
+      // ループはstart indexがend index以上だとオフになります
 
 	There are 2 modes for editing/viewing a SFX: Pitch mode (more suitable
 	for sound effects) and tracker mode (more suitable for music). The mode
 	can be changed using the top-left buttons, or toggled with TAB.
 
 
-	1. Pitch Mode
+  1. ピッチモード(Pitch Mode)
 
 		Click and drag on the pitch area to set the frequency for each note,
 		using the currently selected instrument (indicated by colour).
@@ -424,7 +423,7 @@ PICO-8へようこそ！
 		Hold CTRL to snap notes to the C minor pentatonic scale
 
 
-	2. Tracker Mode
+  2. トラッカーモード(Tracker Mode)
 
 		Each note shows: frequency octave instrument volume effect
 		To enter a note, use q2w3er5t6y7ui zsxdcvgbhnjm (piano-like layout)
@@ -435,7 +434,7 @@ PICO-8へようこそ！
 		(CTRL-C) and pasted (CTRL-V)
 
 
-	3. Controls for both modes
+	3. 両モードの操作方法
 
 		- + to navigate the current SFX
 	    < > to change the speed.
@@ -463,19 +462,21 @@ PICO-8へようこそ！
 
 :: ミュージックエディター
 
-	Music in PICO-8 is controlled by a sequence of 'patterns'. Each pattern is a list of
-	4 numbers indicating which SFX will be played on that channel.
+  PICO-8の音楽はパターンのシーケンスでコントロールされます。それぞれのパターンはどのSFXをその
+  チャンネルで再生するかを示す4つの数字のリストになります。
 
 
-	:: Flow control
+	:: フローコントロール
 
-		Playback flow can be controlled using the 3 buttons at the top right.
+    プレイバックフローは右上の3つのボタンを使って操作します。
 
 		When a pattern has finished playing, the next pattern is played unless:
+    パターンの再生が終わった時、以下に該当しなければ次のパターンを再生します。
 
-		- there is no data left to play (music stops)
-		- a STOP command is set on that pattern (the first button)
+    - 再生する残りデータがない(音楽は止まります)
+    - そのパターンにSTOPコマンドがセットされている(最初のボタン)
 		- a LOOP BACK command is set (the 3rd button), in which case the music player searches
+    - LOOP BACKコマンド(3つ目のボタン)がセットされている、
 			back for a pattern with the LOOP START command set (the 2nd button) or returns to
 			pattern 0 if none is found.
 
@@ -497,10 +498,10 @@ PICO-8へようこそ！
 	Lua入門
 ============================================================================================
 
-PICO-8 programs are written using Lua syntax, but do not use the standard Lua library.
-The following is a brief summary of essential Lua syntax.
+PICO-8のプログラムはLua言語の文法で記述しますが、Luaの標準ライブラリは使用しません。
+以下はLuaで必須となる文法の簡単な要約です。
 
-For more details, or to find out about proper Lua, see www.lua.org.
+より詳細や適正なLuaを知りたい場合は、www.lua.orgを見てください。
 
 :: コメント
 
@@ -583,8 +584,8 @@ For more details, or to find out about proper Lua, see www.lua.org.
 
 :: テーブル
 
-	In Lua, tables are a collection of key-value pairs where the key and value types can both
-	be mixed. They can be used as arrays by indexing them with integers.
+  Luaのテーブルは型が混合可能なキーと値のペアのコレクションです。整数のインデックスをキーにすることで
+  配列としても使用できます。
 
 	A={} -- create an empty table
 	A[1] = "BLAH"
@@ -621,7 +622,7 @@ For more details, or to find out about proper Lua, see www.lua.org.
 	-- note that the condition must be surrounded by brackets.
 
 
-	2. unary math operators
+	2. 単項演算子
 
 	a += 2  -- equivalent to: a = a + 2
 	a -= 2  -- equivalent to: a = a - 2
@@ -639,14 +640,14 @@ For more details, or to find out about proper Lua, see www.lua.org.
 	APIリファレンス
 ============================================================================================
 
-	PICO-8 is built on the Lua scripting language, but does not include the Lua standard library.
-	Instead, a small api is offered in keeping with PICO-8's minimal design and limited screen
-	space. For an example program that uses most of the api functions, see /DEMOS/API.P8
+  PICO-8はLuaスクリプト言語で開発しますが、Lua標準ライブラリは含んでいません。代わりにPICO-8の最小の仕様と
+  限定された画面サイズを踏まえた小さなAPIを提供しています。APIの大部分を使用している参考プログラムとしては、
+  /DEMOS/API.P8をご覧ください。
 
-	Functions are written here as:
-	function_name parameter [optional_parameter]
+  ここで説明される関数は次の形式で書かれています。
+	関数名 引数 [オプション引数]
 
-	System functions called from commandline can omit the usual brackets and string quotes:
+  コマンドラインから使用されるシステム関数は通常の括弧と文字列のクォーテーションを省略できます。
 	load blah.p8 --> load("blah.p8")
 
 
