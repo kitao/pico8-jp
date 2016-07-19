@@ -647,111 +647,111 @@ PICO-8のプログラムはLua言語の文法で記述しますが、Luaの標�
 
 load filename
 save filename
-	Load or save a cartridge
+	カートリッジを読み込み、または保存します
 
-	Use ".png" format to save a png -- otherwise text format (".p8") is used.
+  png形式で保存する場合は".png"を付けてください -- 指定のない場合はテキスト形式(".p8")が使われます
 
-	The ".p8" can be omitted in both cases, and it is automatically added
+  量形式とも".p8"は省略可能で、自動で付加されます
 		save("blah") --> save("blah.p8")
 		save("blah.png") --> save("blah.p8.png")
-		load("blah.png") --> load("blah.p8.png") (if blah.png doesn't exist)
+		load("blah.png") --> load("blah.p8.png") (blah.pngが存在しない場合)
 
-	Same goes for loading. If the file is not found, pico-8 will try again with ".p8" inserted.
+  読み込みについても同様です。対象ファイルが見つからない場合、PICO-8は".p8"を挿入して再試行します。
 
 	The ".png" can also be omitted, but only when loading
-		load ("blah") --> tries "blah.p8.png" and then "blah.png" if "blah.p8" doesn't exist
+  読み込みのみ".png"も省略可能です
+    load ("blah") --> "blah.p8"が存在しない場合、"blah.p8.png"の後に"blah.png"を試みます
 
-	Once a cartridge has been loaded or saved, it can also be quick-saved with CTRL-S
+  一度カートリッジが読み込みまたは保存されると、CTRL-Sでクイックセーブできるようになります
 
 
-	:: Saving .png carts with a text label and preview image
+  :: テキストラベルとプレビュー画像つきでの.pngカートリッジの保存
 
-	To generate a preview image saved with the cart, run the program first and press F7 to grab
-	whatever is on the screen. The first two lines of the program starting with '--' are also drawn
-	to the cart's label.
+  カートリッジとセットで保存されるプレビュー画像を作成するには、プログラムを実行してF7を押して
+  画面の表示内容を取得してください。'--'で始まる最初の2行はカートリッジのラベルとして表示されます。
 
-	e.g.
+  例:
 	-- OCEAN DIVER LEGENDS
 	-- BY LOOPY
 
 
-	:: Code size restrictions for .png format
+  :: .png形式でのコードサイズ制限
 
-	When saving in .png format, the comrpessed size of the code must be less than 15360 bytes. To find
-	out the current size of your code, use the INFO command. The compressed size limit is not enforced
-	for .p8 format. In most cases you don't need to worry about the compressed size, as the token
-	limit (8192) will be reached first.
+  .png形式で保存する際、圧縮されたコードのサイズは15360バイト以下である必要があります。コードの現在の
+  サイズを知るには、INFOコマンドを使用してください。圧縮済みサイズ制限は.p8形式で強制されません。
+  ほとんど場合トークン数制限(8192)の方に先に到達するため、圧縮済みサイズを気にする必要はないでしょう。
 
 
 folder
-	Open the carts folder in the host operating system.
+  ホストOS上でカートリッジフォルダーを開きます
 
 ls
-	List all files in the current folder
+  現在のフォルダーのすべてのファイルを表示します
 
 run
 	Run from the start of the program
-	Can be called from inside a program to reset program.
+  プログラムの先頭から実行します
+  プログラムをリセットするためにプログラム内部から呼ぶことが可能です
 
 resume
 	Run from the existing cart state (flakey)
 
 reboot
-	Reboot the machine
-	Useful for starting a new project
+  マシンを再起動します
+  新しいプロジェクト開始する際に有用です
 
 stat x
-	x:0 returns current Lua memory useage (0..1024MB)
-	x:1 returns cpu useage for last frame (1.0 means 100% at 30fps)
+  x:0 現在のLuaのメモリ使用状況(0-1024MB)を返します
+  x:1 最後に実行されたフレームのCPU使用状況を返します(1.0は30fpsで100%を意味します)
 
 info
 	Print out some information about the cartridge:
-	code size, tokens, compressed size
+  以下のカートリッジ情報を表示します:
+	コードサイズ、トークン数、圧縮済みサイズ
 
 flip
-	Flip the back buffer to screen and wait for next frame (30fps)
+  バックバッファを画面に表示し、次のフレームを待ちます (30fps)
 	Don't normally need to do this -- _draw() calls it for you.
+  通常は使用しないでください -- _draw()関数が代わりに呼びます
 
-	If your program does not call flip before a frame is up, and a _draw() callback
-	is not in progress, the current contents of the back buffer are copied to screen.
+  プログラムがフレームの終了前にflipコマンドを呼べず、_draw()コールバックが実行中
+  でない場合、バックバッファの現在の内容が画面にコピーされます。
 
 printh str
-	Print a string to host operating system's console for debugging.
+  デバッグ用にホストOSのコンソールに文字列を表示します。
 
 
 --------------------------------------------------------------------------------------------
 	プログラム構造
 --------------------------------------------------------------------------------------------
 
-	There are 3 special functions that, if defined by the user, are called during program
-	execution:
+  ユーザーが定義すると、プログラム実行中に呼び出される3つの特殊な関数があります。
 
 		_update()
-			Called once per update at 30fps
+      30fpsの更新タイミング毎に呼ばれます
 
 		_draw()
-			Called once per visible frame
+      画面を表示タイミング毎に呼ばれます
 
 		_init()
-			Called once on program startup
+      プログラム開始時に一度だけ呼ばれます
 
 
-	_draw() is normally called at 30fps, but if it can not complete in time, pico-8 will
-	attempt to run at 15ps and call _update() twice per visible frame to compensate.
+  _draw()は通常30fpsで呼ばれますが、間に合わない場合、PICO-8は15fpsでの実行を試み、
+  埋め合わせに1回の表示ごとに_update()を2回呼びます。
 
 
+  :: PICO-8の60fpsでの動作
 
-	:: Running PICO-8 at 60fps
+    _update()の代わりに_update60()が定義されると、PICO-8は60fpsモードで動作します。
 
-		If _update60() is defined instead of _update(), PICO-8 will run in 60fps mode:
+      - _update60()と_draw()は60fpsで呼ばれます
+      - 30fpsに落ちなければ、フレームごとに使用可能なPICO-8 CPUパワーは半分になります
 
-			- both _update60() and _draw() are called at 60fps
-			- half the PICO-8 CPU is available per frame before dropping down to 30fps
-
-		** please note that not all PICO-8s support 60fps. On machines that do not support it,
-		_update60() will instead be called twice per frame and _draw() at 30fps. You can check
-		the behaviour of your program running at 30fps by adding the following snippet to the
-		bottom of your code:
+    ** すべてのPICO-8が60fpsをサポートするわけではないことに注意してください。60fpsを
+    サポートしないマシンでは、代わりに30fpsでの_draw() 2回ごとに_update60()が呼ばれます。
+    以下のコードをあなたのコードの最後に加えることで、30fpsでのプログラム動作の様子を確認
+    できます。
 
 		u60=_update60 _update60=nil function _update() u60() u60() end
 
@@ -760,16 +760,15 @@ printh str
 	グラフィックス
 --------------------------------------------------------------------------------------------
 
-	PICO-8 has a single bank of 128 8x8 sprites, plus another 128 that overlaps with the
-	bottom half of the map data ("shared data"). These 256 sprites are collectively called
-	the sprite sheet, and can be thought of as a 128x128 pixel image.
+  PICO-8は128の8x8サイズのスプライトをシングルバンクで持っています。加えて、マップの後ろ
+  半分("共有データ")とオーバーラップする128のスプライトがあります。この256のスプライトの
+  集合はスプライトシートと呼ばれ、128x128サイズの画像として扱うことができます。
 
-	All of PICO-8's drawing operations are subject to the current draw-state. The draw-state
-	includes a camera position (for adding an offset to all coordinates), palette mapping
-	(for recolouring sprites), clipping rectangle, and a draw colour that can optionally be
-	set by any relevant function but otherwise persists.
+  すべてのPICO-8の描画操作は現在の描画状態の対象となります。描画状態はカメラ位置(すべての
+  座標にオフセットを与えます)、パレット割り当て(スプライトの色を変更します)、クリップ領域、
+  必要に応じて関連する関数で設定され、そうでなければ継続的に使われる描画色を含んでいます。
 
-	The draw state is reset each time a program is run. This is equivalent to calling:
+  描画状態はプログラムが実行される度にリセットされます。これは以下のコードと同じです。
 	clip() camera() pal() color()
 
 	Colours indexes:
@@ -782,62 +781,60 @@ printh str
 
 clip [x y w h]
 
-	Sets the screen's clipping region in pixels
-	clip() to reset
+  ピクセル単位で画面のクリップ領域を設定します
+  clip()でリセットします
 
 
 pget x y
 pset x y [c]
 
-	Get or set the colour (c) of a pixel at x, y.
+  x, yの座標のピクセル色を取得またはcに設定します
 
 
 sget x y
 sset x y [c]
 
-	Get or set the colour (c) of a spritesheet pixel.
+  スプライトシートのピクセル色を取得またはcに設定します
 
 
 fget n [f]
 fset n [f] v
 
-	Get or set the value (v) of a sprite's flag
-	f is the flag index 0..7
-	v is boolean and can be true or false
+  スプライトのフラグの値を取得またはvを値に設定します
+  fは0-7のフラグ番号です
+  vはブール値でtrueまたはfalseになります
 
-	The initial state of flags 0..7 are settable in the sprite editor,
-	using the line of little colourful buttons.
+  フラグ0-7の初期状態はスプライトエディターで小さな色のついたボタンの列で設定可能です
 
-	The meaning of sprite flags is up to the user, or can be used to
-	indicate which group ('layer') of sprites should be drawn by map.
+  スプライトフラグの意味はユーザー次第で、どのスプライトのグループ('レイヤー')をマップに描画する
+  かを指定することもできます。
 
-	If the flag index is omitted, all flags are retrieved/set as a bitfield
-	fset(2, 1+2+8)   -- sets bits 0,1 and 3
-	fset(2, 4, true) -- sets bit 4
+  フラグ番号が省略されると、すべてのフラグはビット列として取得または設定されます
+	fset(2, 1+2+8)   -- ビット0、1、3を設定します
+	fset(2, 4, true) -- ビット4を設定します
 	print(fget(2))   -- 27 (1+2+8+16)
 
 
 print str [x y [col]]
 
-	Print a string
-	If only str is supplied, and the cursor reaches the end of the screen,
-	a carriage return and vertical scroll is automatically applied.
-	(terminal-like behaviour)
+  文字列を出力します
+  strだけが指定され、カーソルが画面の終端に到達すると、改行と縦方向のスクロールが自動的に行われ
+  ます(ターミナル風の動作です)
 
 
 cursor x y
 
-	Set the cursor position and carriage return margin
+  カーソル位置を設定します
 
 
 color col
 
-	Set the default color to be used by drawing functions
+  描画関数で使用されるデフォルト色を設定します
 
 
 cls
 
-	Clear the screen
+  画面をクリアします
 
 
 camera [x y]
@@ -854,53 +851,53 @@ circfill x y r [col]
 
 line x0 y0 x1 y1 [col]
 
-	draw line
+  直線を描画します
 
 
 rect     x0 y0 x1 y1 [col]
 rectfill x0 y0 x1 y1 [col]
 
-	Draw a rectange or filled rectange
+  矩形の枠線また塗りつぶされた矩形を描画します
 
 
 pal c0 c1 [p]
 
-	Draw all instances of colour c0 as c1 in subsequent draw calls
+  後続する描画命令ですべての色c0をc1として描画します
 
-	pal() to reset to system defaults (including transparency values)
-	Two types of palette (p; defaults to 0)
-		0 draw palette   : colours are remapped on draw    // e.g. to re-colour sprites
-		1 screen palette : colours are remapped on display // e.g. for fades
-	c0 colour index 0..15
-	c1 colour index to map to
+  pal()でデフォルト色にリセットします (透明色も含みます)
+  2種類のパレットがあります (pはデフォルトでは0です)
+		0 描画パレット : 描画時に色を変更されます // 例: スプライトの色を変更して描画します
+		1 画面パレット : 表示されている色を変更します // 例: フェードに使用します
+	c0 0-15の色番号
+	c1 置き換える先の色番号
 
 
 palt c t
 
-	Set transparency for colour index to t (boolean)
-	Transparency is observed by spr(), sspr() and map()
-	e.g. palt(8, true) -- red pixels not drawn
-	palt() resets to default: all colours opaque except colour 0
+  指定した色の透過処理をt(ブール値)に設定します
+  透過処理はsprt()、ssprt()、map()で反映されます
+  例: palt(8, true) -- 赤いピクセルは描画されません
+  palt()でデフォルトにリセットします: カラー0意外のすべての色は不透明になります
 
 
 
 spr n x y [w h] [flip_x] [flip_y]
 
-	draw sprite n (0..255) at position x,y
-	width and height are 1,1 by default and specify how many sprites wide to blit.
-	Colour 0 drawn as transparent by default (see palt())
-	flip_x=true to flip horizontally
-	flip_y=true to flip vertically
+  x, yにn番のスプライト(0-255)を描画します
+	デフォルトでは幅と高さは1,1で、いくつ分のスプライトの幅で描画するかを指定します。
+	デフォルトでは色0は透明として描画されます (palt()を参照してください)
+	flip_xがtrueだと横方向に反転します
+	flip_yがtrueだと縦方向に反転します
 
 
 sspr sx sy sw sh dx dy [dw dh] [flip_x] [flip_y]
 
-	Stretch rectangle from sprite sheet (sx, sy, sw, sh) // given in pixels
-	and draw in rectangle (dx, dy, dw, dh)
-	Colour 0 drawn as transparent by default (see palt())
-	dw, dh defaults to sw, sh
-	flip_x=true to flip horizontally
-	flip_y=true to flip vertically
+  スプライトシート(sx, sy, sw, sh)から矩形を引き伸ばして(dx, dy, dw, dh)の矩形として描画
+  します // ピクセル単位で指定します
+	色0はデフォルトでは透明として描画されます (palt()を参照してください)
+	dwとdhはデフォルトではsw、shになります
+  flip_xがtrueだと横方向に反転します
+	flip_yがtrueだと縦方向に反転します
 
 
 --------------------------------------------------------------------------------------------
@@ -978,8 +975,9 @@ pairs t
 btn [i [p]]
 
 	get button i state for player p (default 0)
-	i: 0..5: left right up down button_o button_x
-	p: player index 0..7
+  プレイヤーp(デフォルトは0)のボタンiの状態を取得します
+	i: 0-5: 左ボタン 右ボタン 上ボタン 下ボタン ○ボタン ×ボタン
+	p: 0-7のプレイヤー番号
 
 	If no parameters supplied, returns a bitfield of all 12 button states for player 0 & 1
 		// P0: bits 0..5  P1: bits 8..13
@@ -1003,7 +1001,7 @@ btnp [i [p]]
 
 sfx n [channel [offset]]
 
-	play sfx n on channel (0..3) from note offset (0..31)
+  n番のSFXをchannel(0-3)のチャネルでoffset(0-31)の位置のノートから再生します
 	n -1 to stop sound on that channel
 	n -2 to release sound on that channel from looping
 	any music playing on the channel will be halted
@@ -1033,7 +1031,7 @@ music [n [fade_len [channel_mask]]]
 mget x y
 mset x y v
 
-	get or set map value (v) at x,y
+  マップのx,yの値を取得、または値vを設定します
 
 map cel_x cel_y sx sy cel_w cel_h [layer]
 
@@ -1051,7 +1049,7 @@ map cel_x cel_y sx sy cel_w cel_h [layer]
 	メモリ
 --------------------------------------------------------------------------------------------------------
 
-PICO-8 has 3 types of memory:
+PICO-8には3種類のメモリがあります。
 
 	1. base ram (32k): see layout below. Access with peek() poke() memcpy() memset()
 	2. cart rom: same layout as base ram until 0x4300. Copy from cart to base ram with reload()
@@ -1068,18 +1066,18 @@ PICO-8 has 3 types of memory:
 
 
 :: Base ram memory layout
-	0x0    gfx
-	0x1000 gfx2/map2 (shared)
-	0x2000 map
-	0x3000 gfx_props
-	0x3100 song
-	0x3200 sfx
-	0x4300 user data
-	0x5e00 persistent cart data (256 bytes)
-	0x5f00 draw state
-	0x5f40 hardware state
-	0x5f80 gpio pins (128 bytes) // in development
-	0x6000 screen (8k)
+	0x0    グラフィックス
+	0x1000 グラフィックス2/マップ2 (共有)
+	0x2000 マップ
+	0x3000 グラフィックス属性
+	0x3100 ミュージック
+	0x3200 SFX
+	0x4300 ユーザーデータ
+	0x5e00 永続するカートリッジデータ (256バイト)
+	0x5f00 描画状態
+	0x5f40 ハード状態
+	0x5f80 GPIOピン (128バイト) // 開発中
+	0x6000 スクリーン (8k)
 
 	User data has no particular meaning and can be used for anything via memcpy(), peek() & poke().
 	Persistent cart data is mapped to 0x5e00..0x5eff but only stored if cartdata() has been called.
@@ -1120,8 +1118,8 @@ cstore dest_addr source_addr len [filename]
 
 memset dest_addr val len
 
-	Set len bytes to val
-	(quite fast -- can use to draw unclipped horizonal scanlines etc)
+  lenバイトをvalに設定します
+  (かなり高速です -- クリップなしの水平方向スキャンライン等に使用できます)
 
 
 --------------------------------------------------------------------------------------------------------
@@ -1132,12 +1130,12 @@ max x y
 min x y
 mid x y z
 
-	Returns the maximum, minimum, or middle value of parameters
-	For example, mid(7,5,10) returns 7
+  パラメータ中から、最大、最小、真ん中の値を返します
+  例えば、mid(7,5,10)は7を返します
 
 flr x
 
-	Returns the closest integer below x // x-(x%1)
+  xより小さい最も近い整数を返します // x-(x%1)
 	flr(4.1)  --> 4
 	flr(-2.3) --> -3.0
 
@@ -1196,15 +1194,15 @@ Bitwise operations
 
 menuitem index [label callback]
 
-	Add an extra item to the pause menu
+  ポーズメニューに追加要素を追加します
 
-	Index should be 1..5 and determines the order each menu item is displayed
-	label should be a string up to 16 characters long
-	callback is a function called when the item is selected by the users
+  番号は1-5である必要があり、各メニューアイテムが表示される順序を決定します
+  labelは16文字までの文字列です
+  callbackはユーザーにアイテムが選択された時に呼ばれる関数です
 
-	When no label or function is supplied, the menu item is removed
+  ラベルや関数が指定されなかった場合、メニューアイテムは削除されます
 
-	example:
+  例:
 	menuitem(1, "restart puzzle", function() reset_puzzle() sfx(10) end)
 
 
@@ -1214,17 +1212,17 @@ menuitem index [label callback]
 
 	s = "the quick brown fox"
 
-	-- length
+	-- 長さ
 
 		print(#s)          --> 19
 
 
-	-- joining strings
+	-- 文字列の結合
 
 		print("three "..4) --> "three 4"
 
 
-	-- sub() to grab substrings
+	-- sub()で部分文字列を取得
 
 		print(sub(s,5,9))  --> "quick"
 		print(sub(s,5))  --> "quick brown fox"
@@ -1250,34 +1248,34 @@ menuitem index [label callback]
 
 cartdata id
 
-	Call this once on cartridge load. id is a string up to 64 characters long, and
-	should be unusual enough that other cartridges do not accidentally use the
-	same id.
+  カートリッジを読み込んだら一度呼びだします。idは64文字までの文字列で、他のカート
+  リッジが偶然同じidを使うことがないようにユニークである必要があります。
 
 	e.g. cartdata("zep_jelpi")
 
 	legal characters are a..z, 0..9 and underscore (_)
+  使用可能な文字はa-z、0-9、アンダースコア(_)です
 
-	returns true iff data was loaded.
+  データが読み込まれるとtrueを返します
 
-	cartdata can not be called more than once per cartridge execution.
+  cartdataはカートリッジ実行ごとに1度だけしか呼べません
 
-	Once a cartdata id has been set, the area of memory 0x5e00..0x5eff is mapped
-	to permanent storage, and can either be accessed directly or via dget/dset.
+  cartdata idがセットされると、メモリの0x5e00-0x5effが永続領域に割り当てられ、
+  直接またはdget/dset経由でアクセスできます。
 
 
 dget index
 
-	Get the number stored at index (0..63)
-	Use this only after you have called cartdata()
+  指定した番号(0-63)の領域の値を取得する
+  cartdata()を読んだ後に使用してください
 
 dset index value
 
-	Set the number stored at index (0..63)
-	use this only after you have called cartdata()
+  指定した番号(0-63)の領域に値を書き込む
+  cartdata()を読んだ後に使用してください
 
-	There is no need to flush written data -- it is automatically
-	saved to permantent storage even if POKE()'ed directly.
+  保存したデータをflushする必要はありません -- 直接POKE()されても自動で永続
+  ストレージに保存されます
 
 
 ------------------------------------------------------------------------------------------------------------
