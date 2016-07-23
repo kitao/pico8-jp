@@ -689,12 +689,11 @@ ls
   現在のフォルダーのすべてのファイルを表示します
 
 run
-	Run from the start of the program
   プログラムの先頭から実行します
   プログラムをリセットするためにプログラム内部から呼ぶことが可能です
 
 resume
-	Run from the existing cart state (flakey)
+  既存のカートリッジ状態から起動します (型破りな方法です)
 
 reboot
   マシンを再起動します
@@ -705,13 +704,11 @@ stat x
   x:1 最後に実行されたフレームのCPU使用状況を返します(1.0は30fpsで100%を意味します)
 
 info
-	Print out some information about the cartridge:
-  以下のカートリッジ情報を表示します:
+  以下のカートリッジ情報を表示します。
 	コードサイズ、トークン数、圧縮済みサイズ
 
 flip
   バックバッファを画面に表示し、次のフレームを待ちます (30fps)
-	Don't normally need to do this -- _draw() calls it for you.
   通常は使用しないでください -- _draw()関数が代わりに呼びます
 
   プログラムがフレームの終了前にflipコマンドを呼べず、_draw()コールバックが実行中
@@ -839,14 +836,14 @@ cls
 
 camera [x y]
 
-	Set a screen offset of -x, -y for all drawing operations
-	camera() to reset
+  すべての描画命令について、画面のオフセットを-x, -yに設定します
+  camera()でリセットします
 
 
 circ     x y r [col]
 circfill x y r [col]
 
-	Draw a circle or filled circle at x,y with radius r
+  円の輪郭線または塗りつぶされた半径rの円をx,yに描画します
 
 
 line x0 y0 x1 y1 [col]
@@ -907,20 +904,20 @@ sspr sx sy sw sh dx dy [dw dh] [flip_x] [flip_y]
 
 add t v
 
-	Add value v to the end of table t.
-	Equivalent to t[#t+1] = v
+  値vをテーブルtの最後に追加します
+	t[#t+1] = vと同じです
 
-		FOO={}        -- create empty table
+		FOO={}        -- 空のテーブルを作成する
 		ADD(FOO, 11)
 		ADD(FOO, 22)
 		PRINT(FOO[2]) -- 22
 
 del t v
 
-	Delete the first instance of value v in table t
-	The remaining entries are shifted left one index to avoid holes.
-	Note that v is the value of the item to be deleted, not the index into the table!
-	del() can be called safely on a table's item while iterating over that table.
+  テーブルtの値vの最初のインスタンスを削除します。
+  インデックスに穴が開かないよう、残りの要素は1番号分小さくなります。
+  vは削除されるアイテムの値であり、テーブルのインデックスではないことに注意してください!
+  del()はtableの繰り返し中にテーブルのアイテムについて安全に呼ぶことができます。
 
 		A={1,10,2,11,3,12}
 		FOR ITEM IN ALL(A) DO
@@ -933,7 +930,7 @@ del t v
 all t
 
 	Used in FOR loops to iterate over all items in a table (that have a 1-based integer index),
-	in the order they were added.
+  (1から始まる番号を持つ)テーブルのすべての要素について追加された順に繰り返すFORループで使用します。
 
 		T = {11,12,13};
 		ADD(T,14)
@@ -944,16 +941,16 @@ all t
 
 foreach t f
 
-	For each item in table t, call function f with the item as a single parameter.
+  テーブルtのそれぞれのアイテムについて、要素を引数として関数fを呼びます。
 
 		FOREACH(T, PRINT)
 
 
 pairs t
 
-	Used in FOR loops to iterate over table t, providing both the key and value for each item.
-	Unlike all(), pairs() iterates over every item regardless of indexing scheme.
-	Order is not guaranteed.
+  テーブルtについて、キーと値のペアを各アイテムで提供しながら繰り返すFORループで使用します。
+  all()と違い、pairs()はインデックスかどうかに関係なくすべてのアイテムを繰り返します。
+  順序は保障されません。
 
 		T = {["HELLO"]=3, [10]="BLAH"}
 		T.BLUE = 5;
@@ -961,7 +958,7 @@ pairs t
 			PRINT("K: "..K.."  V:"..V)
 		END
 
-	Output:
+	出力:
 
 		K: 10  v:BLAH
 		K: HELLO  v:3
@@ -974,7 +971,6 @@ pairs t
 
 btn [i [p]]
 
-	get button i state for player p (default 0)
   プレイヤーp(デフォルトは0)のボタンiの状態を取得します
 	i: 0-5: 左ボタン 右ボタン 上ボタン 下ボタン ○ボタン ×ボタン
 	p: 0-7のプレイヤー番号
@@ -1035,15 +1031,16 @@ mset x y v
 
 map cel_x cel_y sx sy cel_w cel_h [layer]
 
-	draw section of map (in cels) at screen position sx, sy (pixels)
-	if layer is specified, only cels with the same flag number set are drawn
-		// Bitfield. So 0x5 means draw sprites with bit 0 and bit 2 set.
-		// defaults to all sprites
+  画面座標sx, sy(ピクセル単位)にmap(セル単位)の領域を描画します。
+  layerが指定されると、同じフラグ番号のセットのセルのみが描画されます。
 
-	exception: sprite 0 is always taken to mean empty.
+    // ビットフィールド。0x05はビット0とビット2のセットのスプライトのみを描画することを意味します。
+    // デフォルトではすべてのスプライトを描画します
 
-	e.g. map(0,0, 20,20, 4,2)
-	-> draws a 4x2 blocks of cels starting from 0,0 in the map, to the screen at 20,20
+  例外: スプライト0は常に空として扱われます。
+
+	例: map(0,0, 20,20, 4,2)
+  -> 画面の20,20にマップの0,0から始まる4x2のブロックを描画します
 
 --------------------------------------------------------------------------------------------------------
 	メモリ
@@ -1051,21 +1048,23 @@ map cel_x cel_y sx sy cel_w cel_h [layer]
 
 PICO-8には3種類のメモリがあります。
 
-	1. base ram (32k): see layout below. Access with peek() poke() memcpy() memset()
-	2. cart rom: same layout as base ram until 0x4300. Copy from cart to base ram with reload()
-	3. lua ram (1MB): compiled program + variables. Pay no attention to the man behind the curtain.
+  1. ベースRAM: 以下のレイアウトをご覧ください。peek() poke() memcpy() memset()関数でアクセスします。
+  2. カートリッジROM: 0x4300までのベースRAMと同じレイアウトです。reload()関数でカートリッジからベースRAMにコピーされます。
+  3. Lua RAM (1MB): コンパイル済みプログラム＋変数です。内部開発者以外は気にしなくてよいでしょう。
 
 	Technical note: // you probably don't need to know this
+  技術メモ: // 以下のことはおそらく知る必要はありません。
 	While using the editor, the data being modified is in cart rom, but api functions such as spr()
+  エディター使用中、変更されたデータはカートリッジROMの中に存在しますが、spr()やsfx()のようなAPI関数はベースRAMだけを
 	and sfx() only operate on base ram. PICO-8 automatically copies cart rom to base ram (i.e.
-	calls reload()) in 3 cases:
+  操作します。PICO-8は以下の3つのケースで、自動的にカートリッジROMをベースRAMにコピー（例: reload()を呼ぶ)します。
 
-		1. When a cartridge is loaded (from 0.1.6)
-		2. When a cartridge is run
-		3. When exiting any of the editor modes
+    1. カートリッジがロードされた時 (0.1.6より)
+    2. カートリッジが実行された時
+    3. 各エディターモードから抜けた時
 
 
-:: Base ram memory layout
+:: ベースRAMメモリレイアウト
 	0x0    グラフィックス
 	0x1000 グラフィックス2/マップ2 (共有)
 	0x2000 マップ
@@ -1079,41 +1078,41 @@ PICO-8には3種類のメモリがあります。
 	0x5f80 GPIOピン (128バイト) // 開発中
 	0x6000 スクリーン (8k)
 
-	User data has no particular meaning and can be used for anything via memcpy(), peek() & poke().
-	Persistent cart data is mapped to 0x5e00..0x5eff but only stored if cartdata() has been called.
-	Colour format (gfx/screen) is 2 pixels per byte: low bits encode the left pixel of each pair.
-	Map format is one byte per cel, where the byte normally encodes a sprite index.
+  ユーザーデータは特別な意味はなく、memcpy()、peek()、poke()経由で何にでも使えます。
+  継続カートリッジデータは0x5e00-0x5effに割り当てられますが、cartdata()が呼ばれた時だけ保存されます。
+  カラーフォーマット(gfx/screen)は1バイト2ピクセルで、下位ビットが各ペアの左のピクセルを意味します。
+  マップフォーマットは1セル1バイトで、バイトは通常スプライト番号を意味します。
 
 
 peek addr
 poke addr val
 
-	Read and write one byte to an address in base ram.
-	Legal addresses are 0x0..0x7fff
-	Reading or writing outside causes a fault
+  ベースRAMのアドレスの読み込みまたは書き込みを行います。
+  正規のアドレスは0x0-0x7fffです。
+  外部への読み込みまたは書き込みはエラーを起こします。
 
 memcpy dest_addr source_addr len
 
-	Copy len bytes of base ram from source to dest
-	Sections can be overlapping
+  ベースRAMのsourceからdestへlenバイトコピーします。
+  コピー範囲を重複させることが可能です。
 
 reload dest_addr source_addr len [filename]
 
-	Same as memcpy, but copies from cart rom
-	The code section ( >= 0x4300) is protected and can not be read.
-	If filename specified, load data from a different cartridge
+  memcpyと同じですが、カートリッジROMからコピーを行います。
+  コードセクション(>= 0x4300)は保護されており読み込むことができません。
+  ファイル名が指定されていると、異なるカートリッジからデータを読み込みます。
 
 cstore dest_addr source_addr len [filename]
 
-	Same as memcpy, but copies from base ram to cart rom
-	cstore() is equivalent to cstore(0, 0, 0x4300)
-	Can use for writing tools to construct carts or to visualize the state
-	of the map / spritesheet using the map editor / gfx editor.
-	The code section ( >= 0x4300) is protected and can not be written to.
+  memcpyと同じですが、カートリッジROMからコピーを行います。
+  cstore()はcstore(0, 0, 0x4300)と同じです。
+  カートリッジを作成するための書き込みツールまたはマップエディターやグラフィックスエディタを
+  使用しているマップやスプライトシートの確認ツールとして使用できます。
+  コードセクション(>= 0x4300)は保護されており書き込めません。
 
-	If a filename is specified, the data is written directly to that
-	cartridge on disk. Up to 64 cartridges can be written in one session.
-	See the 'Cartridge Data' section for additional notes on using cstore.
+  ファイル名が指定されていると、データは直接ディスク上のカートリッジに書き込まれます。
+  64カートリッジまで1つのセッションで書き込むことができます。cstoreを使用する際の追加の説明は
+  'カートリッジデータ'セクションをご覧ください。
 
 
 memset dest_addr val len
@@ -1143,12 +1142,12 @@ flr x
 cos x
 sin x
 
-	Returns the cosine of x, where 1.0 indicates a full circle
-	sin is inverted to suit screenspace
+  xの余弦を返します。1.0が一周期になります。
+  画面空間に合わせるため正弦は正負が逆転されています。
 	e.g. sin(0.25) returns -1
 
-	If you'd prefer radian-based trig functions without the y inversion,
-	paste the following snippet near the start of your program:
+  yの反転をしないラジアンベースの三角関数が好みの場合は、プログラムの先頭に以下のスニペットを
+　挿入してください。
 
 	cos1 = cos function cos(angle) return cos1(angle/(3.1415*2)) end
 	sin1 = sin function sin(angle) return sin1(-angle/(3.1415*2)) end
@@ -1162,21 +1161,22 @@ atan2 dx dy
 
 sqrt x
 
-	Return the square root of x
+  xの平方根を返します
 
 abs x
 
 	Returns the absolute (positive) value of x
+  xの(正の)絶対値を返します。
 
 rnd x
-	Returns a random number n, where 0 <= n < x
-	If you want an integer, use flr(rnd(x))
+  0以上x未満の乱数nを返します
+  整数が必要な場合は、flr(rnd(x))を使用してください
 
 srand x
-	Sets the random number seed
-	The seed is automatically randomized on cart startup
+  乱数のシードを設定します
+  シードはカートリッジ起動時に自動的にランダム化されます
 
-Bitwise operations
+ビット単位操作
 
 	band x y
 	bor  x y
@@ -1186,7 +1186,7 @@ Bitwise operations
 	shl  x y
 	shr  x y
 
-	// shifts are logicial shifts (the sign bit is not shifted)
+	// シフトは論理シフトです(符号ビットはシフトしません)
 
 --------------------------------------------------------------------------------------------------------
 	カスタムメニューアイテム
@@ -1232,17 +1232,17 @@ menuitem index [label callback]
 	カートリッジデータ
 --------------------------------------------------------------------------------------------
 
-	Each cartidge is able to store 64 numbers (256 bytes) of persistent data
-	on the user's PICO-8 (rather than on the cart itself). This can be used as
-	a lightweight way to store things like high scores or to save player progress.
+  各カートリッジは(カートリッジではなく)ユーザーのPICO-8に64の数値(256バイト)を保持することが
+  できます。これはハイスコアやプレイヤーの進行状況のようなデータを保存する簡単な方法として使えます。
 
-	If you need more than 256 bytes, it is also possible to write directly to the
-	cartridge using cstore(). The disadvantage is that the data is tied to that
-	particular version of the cartridge. e.g. if a game is updated, players will
-	lose their savegames.
+  256バイトよりも多く必要な場合、cstore()関数を使って直接カートリッジに書き込むことができます。
+  この方法の欠点は特定バージョンのカートリッジにデータが紐づけられてしまうことです。例えば、もし
+  ゲームが更新されると、プレイヤーはセーブデータを失ってしまいます。
 
 	Another alternative is to write directly to a second cartridge by specifying
+  それ以外の方法はcstore()関数の4つめのパラメータを指定して2版目のカートリッジに直接書き込むこと
 	a fourth parameter to cstore(). This requires a cart swap though (so is
+  です。この方法はカートリッジ交換を必要としますが、
 	slightly slower), and leaves data-cart litter when run from a local folder.
 
 
