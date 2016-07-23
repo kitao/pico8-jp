@@ -929,7 +929,6 @@ del t v
 
 all t
 
-	Used in FOR loops to iterate over all items in a table (that have a 1-based integer index),
   (1から始まる番号を持つ)テーブルのすべての要素について追加された順に繰り返すFORループで使用します。
 
 		T = {11,12,13};
@@ -975,20 +974,20 @@ btn [i [p]]
 	i: 0-5: 左ボタン 右ボタン 上ボタン 下ボタン ○ボタン ×ボタン
 	p: 0-7のプレイヤー番号
 
-	If no parameters supplied, returns a bitfield of all 12 button states for player 0 & 1
+  引数が指定されないと、プレイヤー0と1の12ボタンすべての状態をビット列として返します。
 		// P0: bits 0..5  P1: bits 8..13
 
-	Default keyboard mappings to player buttons:
+  プレイヤーボタンのデフォルトのキーボード割り当ては以下になります。
 		player 0: cursors, Z,X / C,V / N,M
 		player 1: ESDF, LSHIFT,A / TAB,Q,E
 
 
 btnp [i [p]]
 
-	Same as btn() but only true when the button was not pressed the last frame
-	btnp() also returns true every 4 frames after the button is held for 15 frames.
+  btn()と同じですが、前回のフレームでボタンが押されていなかった時のみtrueになります。
+  btnp()はまた15フレーム押され続けた後、4フレームごとにtrueを返します。
 
-	Useful for things like 'press a button to continue' or menu item movement.
+  'ボタンを押して次に進む'ような処理やメニューの動きなどに便利です。
 
 
 --------------------------------------------------------------------------------------------
@@ -998,26 +997,28 @@ btnp [i [p]]
 sfx n [channel [offset]]
 
   n番のSFXをchannel(0-3)のチャネルでoffset(0-31)の位置のノートから再生します
-	n -1 to stop sound on that channel
-	n -2 to release sound on that channel from looping
-	any music playing on the channel will be halted
-	offset in notes (0..31)
+  nが-1だとそのチャンネルのサウンドを停止します
+  nが-2だとループ再生中のそのチャンネルを解放します
+  そのチャンネルで再生中のすべての音楽は停止します
+  オフセットはノート単位(0-31)です
 
-	channel -1 (default) to automatically choose a channel that is not being used
+  channelが-1だと自動的に使用されていないチャンネルを選択します
 		// if nothing plays, check you gave music() a channel_mask so that music
-		// playback doesn't hog all channels. (e.g. 1+2 for the first two channels)
+    // 何も再生されない場合は、music()をchannel_maskに呼んで音楽再生がすべてのチャンネルを
+    // 独占しないようにしてみてください (例: 最初の2つのチャンネルなら1+2)
 
 
 music [n [fade_len [channel_mask]]]
 
-	play music starting from pattern n (0..63)
-	n -1 to stop music
-	fade_len in ms (default: 0)
-	channel_mask specifies which channels to reserve for music only
-		e.g. to play on channels 0..2: 1+2+4 = 7
+  パターンn(0-63)から始まる音楽を再生します。
+  nが-1で音楽を停止します
+  fade_lenはミリセカンド単位です(デフォルトは0です)
+  channel_maskは音楽再生専用にどのチャンネルを予約するかを指定します
 
-	Reserved channels can still be used to play sound effects on, but only when that
-	channel index is explicitly requested by sfx().
+    例: チャンネル0-2で再生する: 1+2+4 = 7
+
+  予約チャンネルは効果音で使用することはできますが、チャンネル番号がsfx（）によって明示的に要求
+  された時のみになります。
 
 
 --------------------------------------------------------------------------------------------------------
