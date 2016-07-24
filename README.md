@@ -13,4 +13,4 @@ This is a Japanese version of the [PICO-8](http://www.lexaloffle.com/pico-8.php)
 
 しかし、残念ながら日本語のマニュアルはまだ存在しないため、子供達向けに公式マニュアル([pico8.txt](http://www.lexaloffle.com/pico-8.php?page=manual))を自前で翻訳してみました。
 
-- [PICO-8 0.1.8 日本語版マニュアル](./pico8-jp.txt)
+- [PICO-8 v0.1.8 日本語版マニュアル](./pico8-jp.txt)
