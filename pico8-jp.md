@@ -49,7 +49,7 @@ PICO-8の厳しい制限は、使っていて楽しく、小さいけれど表�
 
 PICO-8を起動したら、以下の各コマンドを入力してENTERキーを押してみましょう。
 
-```lua
+```
 PRINT("HELLO WORLD")
 RECTFILL(80,80,120,100,12)
 CIRCFILL(70,90,20,14)
@@ -61,7 +61,7 @@ FOR I=1,4 DO PRINT(I) END
 このようなコマンドを、コードエディターで`_update`や`_draw`などの特殊コールバック関数と組み合わせることで、操作可能なプログラムを作成することができます。
 例えば、次のプログラムはカーソルキーで円を動かします。ESCキーでコードエディターに切り替えて、以下のコードを入力またはコピー＆ペーストしてみてください。
 
-```lua
+```
 X = 64  Y = 64
 FUNCTION _UPDATE()
  IF (BTN(0)) THEN X=X-1 END
@@ -201,7 +201,7 @@ sdl_controllers.txtには1行につき1つのボタン割り当てを記述し�
 
 3. 単体で動作するhtml5版カートリッジを出力する
 
-  ```lua
+  ```
   EXPORT FOO.HTML
   ```
 
@@ -1204,7 +1204,7 @@ cartdata関数を読んだ後に使用してください。
 
 ## バージョン履歴
 
-#### v0.1.8
+### v0.1.8
 
 ```
   Added: 60fps support
@@ -1244,7 +1244,7 @@ cartdata関数を読んだ後に使用してください。
   Fixed: audio pop between patterns during music playback
 ```
 
-#### v0.1.7
+### v0.1.7
 
 ```
 Added: menuitem()
@@ -1258,7 +1258,7 @@ Fixed: Semicolon can't be used as a list or statement separator
 Fixed: Exported html can not cstore self
 ```
 
-#### v0.1.6
+### v0.1.6
 
 ```
 Added: SPLORE local & bbs cartridge explorer
@@ -1287,7 +1287,7 @@ Fixed: cartdata() with bad parameters crashes
 Fixed: EXPORT from commandline can not be used without brackets and quotes
 ```
 
-#### v0.1.5
+### v0.1.5
 
 ```
 Added: Raspberry Pi Build
@@ -1301,21 +1301,21 @@ Fixed: Slashes at end of path resolve to double slashes
 Fixed: Load cart from commandline under Windows
 ```
 
-#### v0.1.4d
-#### v0.1.4c
+### v0.1.4d
+### v0.1.4c
 
 ```
 Fixed: International character entry inserting extra characters
 Fixed: Lines with tabs have broken cursor placement and display boundary
 ```
 
-#### v0.1.4b
+### v0.1.4b
 
 ```
 Fixed: OSX command-key combinations broken
 ```
 
-#### v0.1.4
+### v0.1.4
 
 ```
 Added: spritesheet importing and exporting with import("blah.png"), export("blah.png")
@@ -1351,7 +1351,7 @@ Fixed: Sprite editor mode button doesn't show fullscreen mode
 Fixed: -sound parameter not working in html5 version
 ```
 
-#### v0.1.3
+### v0.1.3
 
 ```
 Added: paste into commandline
@@ -1362,7 +1362,7 @@ Fixed: peek()ing odd bytes in sfx address space masks bit 7
 Fixed: cstore and reload from code space should have no effect
 ```
 
-#### v0.1.2
+### v0.1.2
 
 ```
 Added: html5 cartridge exporter
@@ -1416,7 +1416,7 @@ Fixed: Dragging above top of text causes selection to flip to end
 Fixed: Duplicate at end of file listing
 ```
 
-#### v0.1.1
+### v0.1.1
 
 ```
 Added: Token-based code limiting (8192 tokens, 32k ascii text)
@@ -1463,7 +1463,7 @@ Fixed: Saving and loading a .p8 file adds newline to end of code
 Fixed: Drag selection to left margin in code editor -> selects all
 ```
 
-#### v0.1.0
+### v0.1.0
 
 ```
 Added: demo cart: hello.p8 (use install_demos)
@@ -1484,7 +1484,7 @@ Fixed: text undo stores rollback points when chaning line number
 Fixed: print(str) carriage returns to previous x
 ```
 
-#### v0.0.5
+### v0.0.5
 
 ```
 Added: help()
@@ -1510,7 +1510,7 @@ Fixed: scrolling past top of code with scrollwheel
 Fixed: alt-f4 to fastquit
 ```
 
-#### v0.0.4
+### v0.0.4
 
 ```
 Added: Jelpi demo cart
@@ -1531,7 +1531,7 @@ Fixed: mset() discarding 4 high bits
 Fixed: Crash when highlighting long strings
 ```
 
-#### v0.0.3
+### v0.0.3
 
 ```
 Added: Palette mapping type 1 (on display)
@@ -1548,7 +1548,7 @@ Fixed: Strict 4-channel sound
 Fixed: Automatic sfx channel selection (channel index: -1)
 ```
 
-#### v0.0.2
+### v0.0.2
 
 ```
 Added: Command history
@@ -1565,7 +1565,7 @@ Improved: Editor cursor behaviour
 Fixed: Automatic audio channel selection
 ```
 
-#### v0.0.1
+### v0.0.1
 
 ```
 First Alpha
