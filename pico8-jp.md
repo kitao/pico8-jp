@@ -1,14 +1,16 @@
-# PICO-8 v0.1.8 日本語マニュアル
+# PICO-8 日本語マニュアル
 
- PICO-8 v0.1.8
+```
+PICO-8 v0.1.8
  http://www.pico-8.com
  (c) Copyright 2014-2016 Lexaloffle Games LLP
  Author: Joseph White // hey@lexaloffle.com
 
  PICO-8 is built with:
-  SDL2 http://www.libsdl.org
-  Lua 5.2 http://www.lua.org  // see license.txt
-  GIFLIB http://giflib.sourceforge.net/
+ 	SDL2 http://www.libsdl.org
+ 	Lua 5.2 http://www.lua.org  // see license.txt
+ 	GIFLIB http://giflib.sourceforge.net/
+```
 
 ## PICO-8へようこそ！
 
@@ -159,7 +161,7 @@ config.txtに設定が書かれています。PICO-8が動作していない時�
 注意: これらのオプションはconfig.txtの設定を上書きします
 
 ```
-    pico-8 [オプション] [ファイル名.p8]
+pico-8 [オプション] [ファイル名.p8]
 ```
 
 <table>
@@ -194,23 +196,23 @@ sdl_controllers.txtには1行につき1つのボタン割り当てを記述し�
 1. .p8または.p8.pngファイルを他のPICO-8ユーザーと共有する
 
 2. カートリッジをLexaloffe BBSに投稿してWebブラウザ版を取得する  
-   http://www.lexaloffle.com/pico-8.php?page=submit  
+  http://www.lexaloffle.com/pico-8.php?page=submit  
   .p8.png版の作成方法はsave関数の説明を参照してください。(.pngで検索すると見つかります)
 
 3. 単体で動作するhtml5版カートリッジを出力する
 
-   ```lua
-   EXPORT FOO.HTML
-   ```
+  ```lua
+  EXPORT FOO.HTML
+  ```
 
-   このコマンドはfoo.htmlとfoo.jsの2つのファイルを作成します。(2ファイルとも必要です!)
+  このコマンドはfoo.htmlとfoo.jsの2つのファイルを作成します。(2ファイルとも必要です!)
 
-   作者とその協力者の許可さえあれば、自由に出力されたカートリッジの利用や配布ができます。
+  作者とその協力者の許可さえあれば、自由に出力されたカートリッジの利用や配布ができます。
 
-   .htmlファイルは必要に応じて修正するためのテンプレートになっています。
-   .htmlファイルには設定変更のボタンと外部のウェブサイトへのリンク(デフォルトはPICO-8 BBSのカートリッジページ)、プレイ中にWebページがスクロールするのを防ぐための、キー入力をブロックするJavaScriptが含まれています。
+  .htmlファイルは必要に応じて修正するためのテンプレートになっています。
+  .htmlファイルには設定変更のボタンと外部のウェブサイトへのリンク(デフォルトはPICO-8 BBSのカートリッジページ)、プレイ中にWebページがスクロールするのを防ぐための、キー入力をブロックするJavaScriptが含まれています。
 
-   プレイ画面の幅と高さは変更可能ですが、表示されるcanvasのサイズと一致している必要があることに注意してください(デフォルトのサイズは580x540です)。
+  プレイ画面の幅と高さは変更可能ですが、表示されるcanvasのサイズと一致している必要があることに注意してください(デフォルトのサイズは580x540です)。
 
 ## スクリーンショット、動画、カートリッジラベル
 
@@ -319,25 +321,29 @@ BBSのカートリッジリスト閲覧中は、リストアイテムの先頭�
   - 色を選択するには左マウスボタンを使用します
 
 #### スタンプツール
+
   - クリックするとスタンプ(コピーした領域のコピー)をします
   - 左CTRLキーを押していると透明色を反映させてスタンプを押します
 
-  選択ツール // ショートカット: 左SHIFTまたはSキー
+#### 選択ツール // ショートカット: 左SHIFTまたはSキー
   - 選択領域を作成します
   - ENTERキーまたはクリックで非選択状態になります
 
   - ピクセル単位の選択でない場合は、ほとんど操作がスプライト単位の選択領域に適用されます
   - 複数スプライトを選択するにはスプライトナビゲーターでSHIFTドラッグします
 
-  パンツール // ショートカット: SPACEキー
+#### パンツール // ショートカット: SPACEキー
+
   - スプライトシートを閲覧します
 
-  塗りつぶしツール
+#### 塗りつぶしツール
+
   - 現在の色で塗りつぶします
   - 現在の選択領域に適用します
   - どこも選択されていなければ表示されている範囲に適用されます
 
-  その他操作
+#### その他操作
+
   - CTRL-Zでアンドゥします // 0.2.0では1度だけ有効です
   - CTRL-Cで選択領域または選択したスプライトをコピーします
   - CTRL-Vで現在のスプライト位置にペーストします
@@ -346,18 +352,18 @@ BBSのカートリッジリスト閲覧中は、リストアイテムの先頭�
   - TABキーでフルスクリーン表示を切り替えます
   - マウスホイールでズームします(フルクリーン表示では中央中心でズームします)
 
-
-  選択領域または選択したスプライトの操作方法
+#### 選択領域または選択したスプライトの操作方法
   - Fキーで左右反転します
   - Vキーで上下反転します
   - Rキーで回転します(選択領域が正方形である必要があります)
   - カーソルキーで移動します(スプライト選択時は循環します)
 
-  スプライトフラグ
-    8色の円は現在のスプライトのスプライトフラグです。
-    各フラグはtrue(オン)かfalse(オフ)にでき、fset関数とfget関数でアクセスできます。
-    スプライトフラグは0から番号が振られており、左から(0,1,2..7)となります。詳細はfset関数の
-    説明を参照してください。
+#### スプライトフラグ
+
+8色の円は現在のスプライトのスプライトフラグです。
+各フラグはtrue(オン)かfalse(オフ)にでき、fset関数とfget関数でアクセスできます。
+スプライトフラグは0から番号が振られており、左から(0,1,2..7)となります。詳細はfset関数の
+説明を参照してください。
 
 ### マップエディター
 
@@ -366,10 +372,10 @@ PICO-8のマップは8ビットの値を持つ128x32(または共有領域を使
 
 ツールはスプライトエディターで使われているものと同じです。スプライトを選択してクリック&ドラッグマップに描画してください。
 
-  - 複数のスプライトを描画するには、スプライトナビゲーターでSHIFTドラッグで選択します
-  - 値のブロックをコピーするには選択ツールでコピーした後にスタンプツールでペーストします
-  - マップを移動するにはパンツールを使うかSPACEキーを押します
-  - QキーとWキーで直前と直後のスプライトに移動します
+- 複数のスプライトを描画するには、スプライトナビゲーターでSHIFTドラッグで選択します
+- 値のブロックをコピーするには選択ツールでコピーした後にスタンプツールでペーストします
+- マップを移動するにはパンツールを使うかSPACEキーを押します
+- QキーとWキーで直前と直後のスプライトに移動します
 
 ### SFXエディター
 
@@ -392,43 +398,42 @@ PICO-8のマップは8ビットの値を持つ128x32(または共有領域を使
 SFXの閲覧や確認をするためにピッチモード(効果音向け)とトラッカーモード(音楽向け)の2つのモードがあります。
 左上のボタンかTABキーで切り替えることができます。
 
+1. ピッチモード
 
-  1. ピッチモード
+   ピッチエリアをクリック&ドラッグすることで現在選択している音色(色で示されます)を使って各ノートの周波数を設定します。
 
-ピッチエリアをクリック&ドラッグすることで現在選択している音色(色で示されます)を使って各ノートの周波数を設定します。
+  - シフトを押しながらだと選択された音色のみを適用します
+  - CTRLを押しながらだと音色をCマイナーペンタトニックスケールに自動調整します
 
-    - シフトを押しながらだと選択された音色のみを適用します
-    - CTRLを押しながらだと音色をCマイナーペンタトニックスケールに自動調整します
+2. トラッカーモード
 
-  2. トラッカーモード
+  各ノートは次の要素を表示しています: 周波数 オクターブ 音色 音量 エフェクト
+  - ノートを入力するには、q2w3er5t6y7ui zsxdcvgbhnjm (ピアノ風キー配置)を使います
+  - 新しいノートには選択されている音色/エフェクトが使用されます
+  - ノートを削除するには、BACKSPACEキーを押すかボリュームを0に設定してください
+  - クリックとSHIFTクリックによる範囲選択でコピー(CTRL-C)とペースト(CTRL-V)が可能です
 
-    各ノートは次の要素を表示しています: 周波数 オクターブ 音色 音量 エフェクト
-    - ノートを入力するには、q2w3er5t6y7ui zsxdcvgbhnjm (ピアノ風キー配置)を使います
-    - 新しいノートには選択されている音色/エフェクトが使用されます
-    - ノートを削除するには、BACKSPACEキーを押すかボリュームを0に設定してください
-    - クリックとSHIFTクリックによる範囲選択でコピー(CTRL-C)とペースト(CTRL-V)が可能です
+3. 両モードの操作方法
 
-  3. 両モードの操作方法
-
-    - -と+キーで現在のSFXで移動します
-    - <と>キーでスピードを変化させます
-    - SPACEキーで再生/停止をします
-    - Aキーでサンプルのループをリリースします
-    - クリックまたは左クリックでSPDまたはLOOPの値を増加/減少させます。
-     // クリック時にSHIFTを押していると4ずつ増加/減少させます
-     // もう一つの方法として、クリック&ドラッグで左右または上下させる方法があります
-    - 音色、エフェクト、音量をSHIFTクリックすることですべての音に適用できます
+  - -と+キーで現在のSFXで移動します
+  - <と>キーでスピードを変化させます
+  - SPACEキーで再生/停止をします
+  - Aキーでサンプルのループをリリースします
+  - クリックまたは左クリックでSPDまたはLOOPの値を増加/減少させます。
+   // クリック時にSHIFTを押していると4ずつ増加/減少させます
+   // もう一つの方法として、クリック&ドラッグで左右または上下させる方法があります
+  - 音色、エフェクト、音量をSHIFTクリックすることですべての音に適用できます
 
 #### エフェクト
 
-    0 なし(None)
-    1 スライド       //  次のノートまでスライドさせます
-    2 ビブラート     //  高速にピッチを1/4音の範囲で変化させます
-    3 ドロップ       //  高速に周波数を低い値まで減少させます
-    4 フェードイン   //  音量を0から徐々に上げます
-    5 フェードアウト //  音量を0へ徐々に下げます
-    6 高速アルペジオ //  スピード4で4ノートを繰り返します
-    7 低速アルペジオ //  スピード8で4ノートを繰り返します
+0 なし(None)
+1 スライド       //  次のノートまでスライドさせます
+2 ビブラート     //  高速にピッチを1/4音の範囲で変化させます
+3 ドロップ       //  高速に周波数を低い値まで減少させます
+4 フェードイン   //  音量を0から徐々に上げます
+5 フェードアウト //  音量を0へ徐々に下げます
+6 高速アルペジオ //  スピード4で4ノートを繰り返します
+7 低速アルペジオ //  スピード8で4ノートを繰り返します
 
 もしSFXのスピードが8以下なら、アルペジオのスピードは2や4に半減されます。
 
@@ -618,8 +623,7 @@ load blah.p8 --> load("blah.p8")
 
 ### システム
 
-#### ``load filename``
-#### ``save filename``
+#### ``load filename`` / ``save filename``
 
 カートリッジを読み込み、または保存します。
 
@@ -759,18 +763,15 @@ clip() camera() pal() color()
 ピクセル単位で画面のクリップ領域を設定します。
 clip()でリセットします。
 
-#### ``pget x y``
-#### ``pset x y [c]``
+#### ``pget x y`` / ``pset x y [c]``
 
 画面の座標(x, y)のピクセル色を取得、またはcに設定します。
 
-#### ``sget x y``
-#### ``sset x y [c]``
+#### ``sget x y`` / ``sset x y [c]``
 
 スプライトシートのピクセル色を取得、またはcに設定します。
 
-#### ``fget n [f]``
-#### ``fset n [f] v``
+#### ``fget n [f]`` / ``fset n [f] v``
 
 スプライトのフラグの値を取得、または値にvを設定します。
 f: 0-7のフラグ番号です。
@@ -810,8 +811,7 @@ strだけが指定された時、カーソルが画面の終端に到達する�
 すべての描画命令について、画面のオフセットを(-x, -y)に設定します。
 camera()でリセットします。
 
-#### ``circ     x y r [col]``
-#### ``circfill x y r [col]``
+#### ``circ     x y r [col]`` / ``circfill x y r [col]``
 
 半径rの円の輪郭線、または塗りつぶされた円を(x,y)に描画します。
 
@@ -819,8 +819,7 @@ camera()でリセットします。
 
 直線を描画します。
 
-#### ``rect     x0 y0 x1 y1 [col]``
-#### ``rectfill x0 y0 x1 y1 [col]``
+#### ``rect     x0 y0 x1 y1 [col]`` / ``rectfill x0 y0 x1 y1 [col]``
 
 矩形の輪郭線、または塗りつぶされた矩形を描画します。
 
@@ -978,8 +977,7 @@ channel_mask: 音楽再生専用にどのチャンネルを予約するかを指
 
 ### マップ
 
-#### ``mget x y``
-#### ``mset x y v``
+#### ``mget x y`` / ``mset x y v``
 
 マップの(x,y)の値を取得、または値にvを設定します。
 
@@ -1032,8 +1030,7 @@ PICO-8は以下の3つのケースで、自動的にカートリッジROMをベ�
 色フォーマット(gfx/screen)は1バイト2ピクセルで、下位ビットが各ペアの左のピクセルを意味します。
 マップフォーマットは1セル1バイトで、バイトは通常スプライト番号を意味します。
 
-#### ``peek addr``
-#### ``poke addr val``
+#### ``peek addr`` / ``poke addr val``
 
 ベースRAMのアドレスの読み込み、または書き込みを行います。
 正規のアドレス範囲は0x0-0x7fffです。
@@ -1067,9 +1064,7 @@ lenバイトをvalに設定します。
 
 ### 数学
 
-#### ``max x y``
-#### ``min x y``
-#### ``mid x y z``
+#### ``max x y`` / ``min x y`` / ``mid x y z``
 
 パラメータ中から、最大、最小、真ん中の値を返します。
 例えば、mid(7,5,10)は7を返します。
@@ -1080,8 +1075,7 @@ xより小さい最も近い整数を返します。 // x-(x%1)
 flr(4.1)  --> 4
 flr(-2.3) --> -3.0
 
-#### ``cos x``
-#### ``sin x``
+#### ``cos x`` / ``sin x``
 
 xの余弦を返します。1.0が一周期になります。
 画面空間に合わせるため正弦は正負が逆転されています。
@@ -1210,348 +1204,369 @@ cartdata関数を読んだ後に使用してください。
 
 ## バージョン履歴
 
-  v0.1.8
+#### v0.1.8
 
-    Added: 60fps support
-    Added: Music exporter
-    Added: Custom GIF length (maximum 120 seconds)
-    Added: -,+ to navigate sprite tabs, sfx, music patterns
-    Added: sfx editor: navigate with home, end, pageup/down, mousewheel
-    Added: <, > to modify sfx speed, or click and drag
-    Added: Middle mouse button to pan around spritesheet / map
-    Added: Shortcut command for splore: S
-    Added: Pre-installed selection of BBS cart (use INSTALL_GAMES)
-    Added: Warning when saving .p8.png with no label
-    Added: (OSX) logging to ~/Library/Logs (viewable with Console.app)
-    Changed: Can not CTRL-S save over a loaded bbs cart
-    Changed: Only .p8 files listed by dir() and by splore
-    Changed: Command history increased to 256
-    Changed: exit() / shutdown() have no effect while running cart
-    Fixed: Memory useage (stat(0)) inconsistent across host platforms
-    Fixed: Spinny disks shows when reloading current cart with load()
-    Fixed: GIF saver does not respect 64x64 / mirrored modes
-    Fixed: Miscellaneous multi-line comments / strings issues
-    Fixed: Empty map cels cost cpu in mapdraw()
-    Fixed: mapdraw() slowdown when drawing bottom half of map
-    Fixed: preprocess changes semantics when += and : operators on same line
-    Fixed: Identifiers starting with underscore counted as extra token
-    Fixed: Saving .png exceeding compressed code limit fails silently
-    Fixed: Right-clicking a sprite does not set the currently edited sprite
-    Fixed: (Windows) extra space added to pasted lines
-    Fixed: spr() expensive when drawn with low negative coordinates
-    Fixed: pipe character identical to colon character
-    Fixed: (Raspberry Pi) shift key appends a character when entering text
-    Fixed: Editor mode buttons are still clickable during cart runtime
-    Fixed: When loading a .p8.png file, label is reset and needs to be re-captured
-    Fixed: export() does not report failure
-    Fixed: mset()'d changes in shared memory not readable via peek() / sget()
-    Fixed: cstore() saving edited code
-    Fixed: audio pop between patterns during music playback
+```
+  Added: 60fps support
+  Added: Music exporter
+  Added: Custom GIF length (maximum 120 seconds)
+  Added: -,+ to navigate sprite tabs, sfx, music patterns
+  Added: sfx editor: navigate with home, end, pageup/down, mousewheel
+  Added: <, > to modify sfx speed, or click and drag
+  Added: Middle mouse button to pan around spritesheet / map
+  Added: Shortcut command for splore: S
+  Added: Pre-installed selection of BBS cart (use INSTALL_GAMES)
+  Added: Warning when saving .p8.png with no label
+  Added: (OSX) logging to ~/Library/Logs (viewable with Console.app)
+  Changed: Can not CTRL-S save over a loaded bbs cart
+  Changed: Only .p8 files listed by dir() and by splore
+  Changed: Command history increased to 256
+  Changed: exit() / shutdown() have no effect while running cart
+  Fixed: Memory useage (stat(0)) inconsistent across host platforms
+  Fixed: Spinny disks shows when reloading current cart with load()
+  Fixed: GIF saver does not respect 64x64 / mirrored modes
+  Fixed: Miscellaneous multi-line comments / strings issues
+  Fixed: Empty map cels cost cpu in mapdraw()
+  Fixed: mapdraw() slowdown when drawing bottom half of map
+  Fixed: preprocess changes semantics when += and : operators on same line
+  Fixed: Identifiers starting with underscore counted as extra token
+  Fixed: Saving .png exceeding compressed code limit fails silently
+  Fixed: Right-clicking a sprite does not set the currently edited sprite
+  Fixed: (Windows) extra space added to pasted lines
+  Fixed: spr() expensive when drawn with low negative coordinates
+  Fixed: pipe character identical to colon character
+  Fixed: (Raspberry Pi) shift key appends a character when entering text
+  Fixed: Editor mode buttons are still clickable during cart runtime
+  Fixed: When loading a .p8.png file, label is reset and needs to be re-captured
+  Fixed: export() does not report failure
+  Fixed: mset()'d changes in shared memory not readable via peek() / sget()
+  Fixed: cstore() saving edited code
+  Fixed: audio pop between patterns during music playback
+```
 
-  v0.1.7
+#### v0.1.7
 
-    Added: menuitem()
-    Added: button glyphs in code (shift-L, R, U, D, X, O)
-    Added: Customisable data directory (e.g. pico8 -home mydata)
-    Added: Web gpio pins: read and write pico8_gpio[] in javscript
-    Fixed: SPLORE search doesn't reset
-    Fixed: Splore skipping 33rd cart listing after loading more items
-    Fixed: Crash when selecting a local binary file in splore
-    Fixed: Semicolon can't be used as a list or statement separator
-    Fixed: Exported html can not cstore self
+```
+Added: menuitem()
+Added: button glyphs in code (shift-L, R, U, D, X, O)
+Added: Customisable data directory (e.g. pico8 -home mydata)
+Added: Web gpio pins: read and write pico8_gpio[] in javscript
+Fixed: SPLORE search doesn't reset
+Fixed: Splore skipping 33rd cart listing after loading more items
+Fixed: Crash when selecting a local binary file in splore
+Fixed: Semicolon can't be used as a list or statement separator
+Fixed: Exported html can not cstore self
+```
 
+#### v0.1.6
 
-  v0.1.6
+```
+Added: SPLORE local & bbs cartridge explorer
+Added: setmetatable(), cocreate(), coresume(), costatus(), yield()
+Added: Spinning cart icon to show when a cart is swapped / written to
+Added: Permanent storage when carts played in a browser
+Added: Adjustable aspect ratio (-aspect 420 for 1:1)
+Changed: Lua memory limit: 1024k (was 512k)
+Changed: Music channel now resumes after being clobbered by an sfx
+Changed: Arpeggios double speed when SFX speed <= 8
+Changed: Exceeding compressed code limit does not block saving in .p8 format
+Changed: spr() half as expensive, to be consistent with map()
+Changed: Fractional hex number notation: 0x0.3 == 0x0.3000, (was 0x0.0003)
+Changed: : operator doesn't count as an extra token (same as .)
+Changed: cstore() writes directly to disk
+Changed: cstore(), reload() return number of bytes read / written
+Changed: save() while running does nothing. (use cstore() instead)
+Changed: load() while running loads and runs the specified cartridge
+Fixed: Small pops in audio mixer caused by sound wave discontinuities
+Fixed: HTML5-exported sound clicks badly under Chrome
+Fixed: Display palette is not oberserved when exporting GIFs
+Fixed: Rapid keypresses causes duplicate readings in tracker & text editor
+Fixed: += inside comments breaks preprocessor
+Fixed: sspr() cpu cost the same when clipped
+Fixed: cartdata() with bad parameters crashes
+Fixed: EXPORT from commandline can not be used without brackets and quotes
+```
 
-    Added: SPLORE local & bbs cartridge explorer
-    Added: setmetatable(), cocreate(), coresume(), costatus(), yield()
-    Added: Spinning cart icon to show when a cart is swapped / written to
-    Added: Permanent storage when carts played in a browser
-    Added: Adjustable aspect ratio (-aspect 420 for 1:1)
-    Changed: Lua memory limit: 1024k (was 512k)
-    Changed: Music channel now resumes after being clobbered by an sfx
-    Changed: Arpeggios double speed when SFX speed <= 8
-    Changed: Exceeding compressed code limit does not block saving in .p8 format
-    Changed: spr() half as expensive, to be consistent with map()
-    Changed: Fractional hex number notation: 0x0.3 == 0x0.3000, (was 0x0.0003)
-    Changed: : operator doesn't count as an extra token (same as .)
-    Changed: cstore() writes directly to disk
-    Changed: cstore(), reload() return number of bytes read / written
-    Changed: save() while running does nothing. (use cstore() instead)
-    Changed: load() while running loads and runs the specified cartridge
-    Fixed: Small pops in audio mixer caused by sound wave discontinuities
-    Fixed: HTML5-exported sound clicks badly under Chrome
-    Fixed: Display palette is not oberserved when exporting GIFs
-    Fixed: Rapid keypresses causes duplicate readings in tracker & text editor
-    Fixed: += inside comments breaks preprocessor
-    Fixed: sspr() cpu cost the same when clipped
-    Fixed: cartdata() with bad parameters crashes
-    Fixed: EXPORT from commandline can not be used without brackets and quotes
+#### v0.1.5
 
+```
+Added: Raspberry Pi Build
+Added: Keyboard configuration for player buttons (KEYCONFIG)
+Added: Music tracker select / copy / paste
+Added: Single-level undo in audio tools
+Added: Live preview of frequencies in sound editor
+Fixed: Command history extends past last reboot
+Fixed: Sfx exporter broken
+Fixed: Slashes at end of path resolve to double slashes
+Fixed: Load cart from commandline under Windows
+```
 
-  v0.1.5
+#### v0.1.4d
+#### v0.1.4c
 
-    Added: Raspberry Pi Build
-    Added: Keyboard configuration for player buttons (KEYCONFIG)
-    Added: Music tracker select / copy / paste
-    Added: Single-level undo in audio tools
-    Added: Live preview of frequencies in sound editor
-    Fixed: Command history extends past last reboot
-    Fixed: Sfx exporter broken
-    Fixed: Slashes at end of path resolve to double slashes
-    Fixed: Load cart from commandline under Windows
+```
+Fixed: International character entry inserting extra characters
+Fixed: Lines with tabs have broken cursor placement and display boundary
+```
 
+#### v0.1.4b
 
-  v0.1.4d
-  v0.1.4c
+```
+Fixed: OSX command-key combinations broken
+```
 
-    Fixed: International character entry inserting extra characters
-    Fixed: Lines with tabs have broken cursor placement and display boundary
+#### v0.1.4
 
-  v0.1.4b
+```
+Added: spritesheet importing and exporting with import("blah.png"), export("blah.png")
+Added: sfx exporting with export("blah%d.wav")
+Added: External cartridge parameter for reload() and cstore()
+Added: Persistent cartridge data mapped to 0x5e00
+Added: Click token limit to toggle token & char limit display
+Added: assert(), type()
+Added: P to pause
+Changed: code char limit: 64k (was 32k)
+Changed: local declarations and semicolons not counted as tokens
+Changed: Pairs of brackets and block delimitations count as one token
+Changed: Only _update() or _draw() need to exist to enter main loop
+Changed: Allow forward-slash in code editor
+Changed: info() reports current (last loaded or saved) filename
+Changed: html5 version compiled with NO_DYNAMIC_EXECUTION
+Changed: can only cstore up to 64 different files in one session
+Changed: load() automatically copies data section of cart to base ram
+Fixed: Shift-drag-copy sprites -> paste only pastes 1x1
+Fixed: ".." should count as one token
+Fixed: Tracker displaying D instead of .
+Fixed: Multi-line comments
+Fixed: Crash on run when code close to char limit
+Fixed: When over token limit, can not run any command
+Fixed: Unused high bits in SFX section not saved in .p8 format
+Fixed: Camera position memory mapping out of sync
+Fixed: pico8.txt link broken in windows installer
+Fixed: print() crashes when parameter is not a string or numbers
+Fixed: Multi-line strings & escape chars mess up tokenizer and print()
+Fixed: Joystick not responding when left stick is up to the left
+Fixed: Alt-F4 saves screenshot before quitting
+Fixed: Sprite editor mode button doesn't show fullscreen mode
+Fixed: -sound parameter not working in html5 version
+```
 
-    Fixed: OSX command-key combinations broken
+#### v0.1.3
 
-  v0.1.4
+```
+Added: paste into commandline
+Fixed: lua standard libraries accessible
+Fixed: command-line loading doesn't work
+Fixed: music pattern finished too early when all tracks set to looping
+Fixed: peek()ing odd bytes in sfx address space masks bit 7
+Fixed: cstore and reload from code space should have no effect
+```
 
-    Added: spritesheet importing and exporting with import("blah.png"), export("blah.png")
-    Added: sfx exporting with export("blah%d.wav")
-    Added: External cartridge parameter for reload() and cstore()
-    Added: Persistent cartridge data mapped to 0x5e00
-    Added: Click token limit to toggle token & char limit display
-    Added: assert(), type()
-    Added: P to pause
-    Changed: code char limit: 64k (was 32k)
-    Changed: local declarations and semicolons not counted as tokens
-    Changed: Pairs of brackets and block delimitations count as one token
-    Changed: Only _update() or _draw() need to exist to enter main loop
-    Changed: Allow forward-slash in code editor
-    Changed: info() reports current (last loaded or saved) filename
-    Changed: html5 version compiled with NO_DYNAMIC_EXECUTION
-    Changed: can only cstore up to 64 different files in one session
-    Changed: load() automatically copies data section of cart to base ram
-    Fixed: Shift-drag-copy sprites -> paste only pastes 1x1
-    Fixed: ".." should count as one token
-    Fixed: Tracker displaying D instead of .
-    Fixed: Multi-line comments
-    Fixed: Crash on run when code close to char limit
-    Fixed: When over token limit, can not run any command
-    Fixed: Unused high bits in SFX section not saved in .p8 format
-    Fixed: Camera position memory mapping out of sync
-    Fixed: pico8.txt link broken in windows installer
-    Fixed: print() crashes when parameter is not a string or numbers
-    Fixed: Multi-line strings & escape chars mess up tokenizer and print()
-    Fixed: Joystick not responding when left stick is up to the left
-    Fixed: Alt-F4 saves screenshot before quitting
-    Fixed: Sprite editor mode button doesn't show fullscreen mode
-    Fixed: -sound parameter not working in html5 version
+#### v0.1.2
 
+```
+Added: html5 cartridge exporter
+Added: Cartridge save data (64 fixed point numbers)
+Added: 8-player input
+Added: Demo carts: COLLIDE and BUTTERFLY
+Added: Command-line parameters // load cart, -run, settings
+Added: Alternative function keys (F6..F9 aliased as F1..F4)
+Added: pairs()
+Added: printh() for debugging
+Added: Tab completion for filenames in console
+Added: stack trace on runtime error
+Changed: music pattern length taken to be first non-looping channel's length
+Changed: noise instrument (6) has low frequency white noise scaled by volume
+Changed: screenshot captures whole window contents at display resolution
+Changed: del() moves remaining items up one index to maintain a packed table
+Changed: add(),del(),count(),all() no longer store extra fields
+Changed: removed count() from docs -- now just a legacy function. Use # operator instead.
+Changed: cursor only blinks while window is active
+Changed: peek(), poke() and binary operations (band()..) have no function call overhead
+Changed: yellow slightly warmer
+Changed: No camera snapping after pan in map mode
+Fixed: sqrt() crashing for 0 or >= 32761
+Fixed: Semi-colon characters in text editor
+Fixed: Long lines split when saving in .p8 format
+Fixed: pget() does not respect camera position
+Fixed: Error message when peeking or poking outside of legal address space
+Fixed: Search replace colour fills one pixel outside of selected region
+Fixed: Playing an empty music pattern breaks subsequent music playback
+Fixed: Invalid sfx editing state on startup
+Fixed: Painting instruments values in frequency view also sets volumes
+Fixed: Inconsistent gif recording speeds
+Fixed: Unmapped joystick support
+Fixed: Compressed code size sometimes larger than uncompressed
+Fixed: mid() fails when first argument is not smallest
+Fixed: Scroll wheel changes sprite/map zoom while in code editor
+Fixed: CTRL-R (quick-run) drawing over current line in command mode
+Fixed: Label capture (F7) does not respect screen palette state
+Fixed: Syntax highlighting of api functions and hex numbers
+Fixed: Looping to 0 with negative step finishes at 1
+Fixed: nil values printed as false instead of nil
+Fixed: Hexedecimal fractional parts
+Fixed: btnp() unresponsive when skipping frames
+Fixed: Editing mode is lost when using ctrl-r to run
+Fixed: Tracker note entry keys mapped, messing up piano-like layout
+Fixed: Shared gfx/map memory out of sync after some editor operations
+Fixed: Alt-gr character entry
+Fixed: Can map display palette to entries >= 16 using poke()
+Fixed: Using shift to select in code editor has wrong selection range
+Fixed: Dragging above top of text causes selection to flip to end
+Fixed: Duplicate at end of file listing
+```
 
-  v0.1.3
+#### v0.1.1
 
-    Added: paste into commandline
-    Fixed: lua standard libraries accessible
-    Fixed: command-line loading doesn't work
-    Fixed: music pattern finished too early when all tracks set to looping
-    Fixed: peek()ing odd bytes in sfx address space masks bit 7
-    Fixed: cstore and reload from code space should have no effect
+```
+Added: Token-based code limiting (8192 tokens, 32k ascii text)
+Added: Freeform move, pan and selection in sprite and map editors
+Added: Flood-fill tool (sprite and map)
+Added: .GIF saver
+Added: CTRL-Stamp to stamp with transparency
+Added: Single-step undo for map and sprites
+Added: 2x2 brush
+Added: sqrt(), atan2()
+Added: CTRL-S to quick-save
+Added: CTRL-R reloads .p8 file and runs (useful for external text editing)
+Added: Automatic backups on overwriting or quitting without saving
+Added: Scroll wheel zooms in sprite editor
+Added: Customisable resolution //  e.g. pico8 -width 580
+Added: Strings highlighted as green
+Added: ALT-click can optionally simulate right click (see config.txt)
+Added: palt() to control transparency for spr(), sspr()
+Added: info()
+Changed: load() tries adding .p8.png, .png if file doesn't exist
+Changed: Draw operations apply only to selection when active
+Changed: Move operations (cursors) apply to selection if present
+Changed: Removed time()
+Changed: Random seed is random on cart startup
+Changed: api functions never read directly from cart rom
+Changed: sspr() can take negative values for dw, dh
+Fixed: Sparse table indexing with integers fails
+Fixed: Assignment operators and shortform if-then-else failing
+Fixed: sspr() failed when w0 == 128
+Fixed: Circle drawing broken when camera not (0,0)
+Fixed: CPU hogging
+Fixed: Noise instrument clobbers rnd() sequence
+Fixed: Audio system not resetting on program reset
+Fixed: % operator sometimes wrong for negative values
+Fixed: Length operator (#)
+Fixed: Power operator (^)
+Fixed: Line clipping bug on right and bottom edges
+Fixed: print() precision for whole numbers
+Fixed: print() broken for negative y values
+Fixed: tokenization and keyword highlighting
+Fixed: sprite properties not copied/pasted
+Fixed: Only sfx 0..32 could be used as music patterns
+Fixed: Saving and loading a .p8 file adds newline to end of code
+Fixed: Drag selection to left margin in code editor -> selects all
+```
 
-  v0.1.2
+#### v0.1.0
 
-    Added: html5 cartridge exporter
-    Added: Cartridge save data (64 fixed point numbers)
-    Added: 8-player input
-    Added: Demo carts: COLLIDE and BUTTERFLY
-    Added: Command-line parameters // load cart, -run, settings
-    Added: Alternative function keys (F6..F9 aliased as F1..F4)
-    Added: pairs()
-    Added: printh() for debugging
-    Added: Tab completion for filenames in console
-    Added: stack trace on runtime error
-    Changed: music pattern length taken to be first non-looping channel's length
-    Changed: noise instrument (6) has low frequency white noise scaled by volume
-    Changed: screenshot captures whole window contents at display resolution
-    Changed: del() moves remaining items up one index to maintain a packed table
-    Changed: add(),del(),count(),all() no longer store extra fields
-    Changed: removed count() from docs -- now just a legacy function. Use # operator instead.
-    Changed: cursor only blinks while window is active
-    Changed: peek(), poke() and binary operations (band()..) have no function call overhead
-    Changed: yellow slightly warmer
-    Changed: No camera snapping after pan in map mode
-    Fixed: sqrt() crashing for 0 or >= 32761
-    Fixed: Semi-colon characters in text editor
-    Fixed: Long lines split when saving in .p8 format
-    Fixed: pget() does not respect camera position
-    Fixed: Error message when peeking or poking outside of legal address space
-    Fixed: Search replace colour fills one pixel outside of selected region
-    Fixed: Playing an empty music pattern breaks subsequent music playback
-    Fixed: Invalid sfx editing state on startup
-    Fixed: Painting instruments values in frequency view also sets volumes
-    Fixed: Inconsistent gif recording speeds
-    Fixed: Unmapped joystick support
-    Fixed: Compressed code size sometimes larger than uncompressed
-    Fixed: mid() fails when first argument is not smallest
-    Fixed: Scroll wheel changes sprite/map zoom while in code editor
-    Fixed: CTRL-R (quick-run) drawing over current line in command mode
-    Fixed: Label capture (F7) does not respect screen palette state
-    Fixed: Syntax highlighting of api functions and hex numbers
-    Fixed: Looping to 0 with negative step finishes at 1
-    Fixed: nil values printed as false instead of nil
-    Fixed: Hexedecimal fractional parts
-    Fixed: btnp() unresponsive when skipping frames
-    Fixed: Editing mode is lost when using ctrl-r to run
-    Fixed: Tracker note entry keys mapped, messing up piano-like layout
-    Fixed: Shared gfx/map memory out of sync after some editor operations
-    Fixed: Alt-gr character entry
-    Fixed: Can map display palette to entries >= 16 using poke()
-    Fixed: Using shift to select in code editor has wrong selection range
-    Fixed: Dragging above top of text causes selection to flip to end
-    Fixed: Duplicate at end of file listing
+```
+Added: demo cart: hello.p8 (use install_demos)
+Added: CTRL-R from anywhere to run cart or restart cart
+Added: use a,s to select colour in gfx editor
+Added: black background behind
+Added: consistent operation cpu costs
+Added: btn(), btnp() with no arguments returns bitfield
+Added: fget(id) returns bitfield of that sprite's flags
+Changed: renamed mapdraw() to map() for consistency
+Changed: default sleep time is 5ms (better cpu consumption for laptops)
+Fixed: memory limiter
+Fixed: wonky line and circle drawing
+Fixed: shift-click volume in sfx editor to set all
+Fixed: number formatting is now never in scientific notation
+Fixed: clipped error messages in console
+Fixed: text undo stores rollback points when chaning line number
+Fixed: print(str) carriage returns to previous x
+```
 
+#### v0.0.5
 
-  v0.1.1
+```
+Added: help()
+Added: Ctrl+F / Ctrl+G to search for text, repeat search
+Added: del key in code editor
+Added: Short-hand single-line IF statements
+Added: Unary operators += -= /= *= %=
+Added: srand(), time(), added rnd() to docs
+Added: Ctrl+D to duplicate line
+Added: interactive ls() for multi-page file listings
+Added: band() bor() bxor() bnot() shl() shr()
+Added: runtime error line number
+Added: dir() (aliased to ls())
+Changed: print() only autoscrolls when called with no parameters
+Changed: alt+up/down to skip between function definitions (was ctrl)
+Changed: sspr() dw, dh defaults to sw, sh
+Fixed: Load crashes on files that are not .p8 format or directories
+Fixed: Misc editor cursor position glitches
+Fixed: Crash when syntax error occurs before viewing code
+Fixed: Broken newlines after rebooting
+Fixed: mkdir() called with no parameters creating "(null)" directory
+Fixed: scrolling past top of code with scrollwheel
+Fixed: alt-f4 to fastquit
+```
 
-    Added: Token-based code limiting (8192 tokens, 32k ascii text)
-    Added: Freeform move, pan and selection in sprite and map editors
-    Added: Flood-fill tool (sprite and map)
-    Added: .GIF saver
-    Added: CTRL-Stamp to stamp with transparency
-    Added: Single-step undo for map and sprites
-    Added: 2x2 brush
-    Added: sqrt(), atan2()
-    Added: CTRL-S to quick-save
-    Added: CTRL-R reloads .p8 file and runs (useful for external text editing)
-    Added: Automatic backups on overwriting or quitting without saving
-    Added: Scroll wheel zooms in sprite editor
-    Added: Customisable resolution //  e.g. pico8 -width 580
-    Added: Strings highlighted as green
-    Added: ALT-click can optionally simulate right click (see config.txt)
-    Added: palt() to control transparency for spr(), sspr()
-    Added: info()
-    Changed: load() tries adding .p8.png, .png if file doesn't exist
-    Changed: Draw operations apply only to selection when active
-    Changed: Move operations (cursors) apply to selection if present
-    Changed: Removed time()
-    Changed: Random seed is random on cart startup
-    Changed: api functions never read directly from cart rom
-    Changed: sspr() can take negative values for dw, dh
-    Fixed: Sparse table indexing with integers fails
-    Fixed: Assignment operators and shortform if-then-else failing
-    Fixed: sspr() failed when w0 == 128
-    Fixed: Circle drawing broken when camera not (0,0)
-    Fixed: CPU hogging
-    Fixed: Noise instrument clobbers rnd() sequence
-    Fixed: Audio system not resetting on program reset
-    Fixed: % operator sometimes wrong for negative values
-    Fixed: Length operator (#)
-    Fixed: Power operator (^)
-    Fixed: Line clipping bug on right and bottom edges
-    Fixed: print() precision for whole numbers
-    Fixed: print() broken for negative y values
-    Fixed: tokenization and keyword highlighting
-    Fixed: sprite properties not copied/pasted
-    Fixed: Only sfx 0..32 could be used as music patterns
-    Fixed: Saving and loading a .p8 file adds newline to end of code
-    Fixed: Drag selection to left margin in code editor -> selects all
+#### v0.0.4
 
+```
+Added: Jelpi demo cart
+Added: Internal carts // use install_demos()
+Added: Joystick support
+Added: Undo/redo in code editor
+Added: Scroll wheel in code editor
+Added: LCTRL + UP/DOWN to navigate functions in code editor
+Added: LALT + LEFT/RIGHT to switch editing modes
+Added: btnp()
+Added: Release looping sample (a in editor , sfx(-2, channel) in code)
+Changed: Music stops when pausing program execution
+Changed: Allow 8 settable sprite flags
+Changed: Made noise instrument more bassy
+Fixed: Home, end keys
+Fixed: Sprite flags 4,5 not saved
+Fixed: mset() discarding 4 high bits
+Fixed: Crash when highlighting long strings
+```
 
-  v0.1.0
+#### v0.0.3
 
-    Added: demo cart: hello.p8 (use install_demos)
-    Added: CTRL-R from anywhere to run cart or restart cart
-    Added: use a,s to select colour in gfx editor
-    Added: black background behind
-    Added: consistent operation cpu costs
-    Added: btn(), btnp() with no arguments returns bitfield
-    Added: fget(id) returns bitfield of that sprite's flags
-    Changed: renamed mapdraw() to map() for consistency
-    Changed: default sleep time is 5ms (better cpu consumption for laptops)
-    Fixed: memory limiter
-    Fixed: wonky line and circle drawing
-    Fixed: shift-click volume in sfx editor to set all
-    Fixed: number formatting is now never in scientific notation
-    Fixed: clipped error messages in console
-    Fixed: text undo stores rollback points when chaning line number
-    Fixed: print(str) carriage returns to previous x
+```
+Added: Palette mapping type 1 (on display)
+Added: Collections can be initialized with c={1,2,..}
+Added: holdframe() // used automatically by _draw(), update()
+Added: Sprite selections and operations across selections
+Added: Map selection and stamp tool
+Added: Immediate mode screen buffer preserved while switching views
+Added: Channel mask for music playback
+Added: Memory mapping for live sound data
+Added: .png cart format
+Added: Sprite navigation by keyboard (-, +)
+Fixed: Strict 4-channel sound
+Fixed: Automatic sfx channel selection (channel index: -1)
+```
 
+#### v0.0.2
 
-  v0.0.5
+```
+Added: Command history
+Added: P2 keys
+Added: Boot sequence
+Added: Windows, 64-bit linux builds
+Added: CPU cost of internal api functions
+Added: Separate song channel index and mute status
+Added: Memory mapping
+Added: Search/replace colour in sprite editor
+Added: Copy/paste sprites and map regions
+Improved: Immediate mode command editing
+Improved: Editor cursor behaviour
+Fixed: Automatic audio channel selection
+```
 
-    Added: help()
-    Added: Ctrl+F / Ctrl+G to search for text, repeat search
-    Added: del key in code editor
-    Added: Short-hand single-line IF statements
-    Added: Unary operators += -= /= *= %=
-    Added: srand(), time(), added rnd() to docs
-    Added: Ctrl+D to duplicate line
-    Added: interactive ls() for multi-page file listings
-    Added: band() bor() bxor() bnot() shl() shr()
-    Added: runtime error line number
-    Added: dir() (aliased to ls())
-    Changed: print() only autoscrolls when called with no parameters
-    Changed: alt+up/down to skip between function definitions (was ctrl)
-    Changed: sspr() dw, dh defaults to sw, sh
-    Fixed: Load crashes on files that are not .p8 format or directories
-    Fixed: Misc editor cursor position glitches
-    Fixed: Crash when syntax error occurs before viewing code
-    Fixed: Broken newlines after rebooting
-    Fixed: mkdir() called with no parameters creating "(null)" directory
-    Fixed: scrolling past top of code with scrollwheel
-    Fixed: alt-f4 to fastquit
+#### v0.0.1
 
-
-  v0.0.4
-
-    Added: Jelpi demo cart
-    Added: Internal carts // use install_demos()
-    Added: Joystick support
-    Added: Undo/redo in code editor
-    Added: Scroll wheel in code editor
-    Added: LCTRL + UP/DOWN to navigate functions in code editor
-    Added: LALT + LEFT/RIGHT to switch editing modes
-    Added: btnp()
-    Added: Release looping sample (a in editor , sfx(-2, channel) in code)
-    Changed: Music stops when pausing program execution
-    Changed: Allow 8 settable sprite flags
-    Changed: Made noise instrument more bassy
-    Fixed: Home, end keys
-    Fixed: Sprite flags 4,5 not saved
-    Fixed: mset() discarding 4 high bits
-    Fixed: Crash when highlighting long strings
-
-
-  v0.0.3
-
-    Added: Palette mapping type 1 (on display)
-    Added: Collections can be initialized with c={1,2,..}
-    Added: holdframe() // used automatically by _draw(), update()
-    Added: Sprite selections and operations across selections
-    Added: Map selection and stamp tool
-    Added: Immediate mode screen buffer preserved while switching views
-    Added: Channel mask for music playback
-    Added: Memory mapping for live sound data
-    Added: .png cart format
-    Added: Sprite navigation by keyboard (-, +)
-    Fixed: Strict 4-channel sound
-    Fixed: Automatic sfx channel selection (channel index: -1)
-
-
-  v0.0.2
-
-    Added: Command history
-    Added: P2 keys
-    Added: Boot sequence
-    Added: Windows, 64-bit linux builds
-    Added: CPU cost of internal api functions
-    Added: Separate song channel index and mute status
-    Added: Memory mapping
-    Added: Search/replace colour in sprite editor
-    Added: Copy/paste sprites and map regions
-    Improved: Immediate mode command editing
-    Improved: Editor cursor behaviour
-    Fixed: Automatic audio channel selection
-
-
-  v0.0.1
-
-    First Alpha
+```
+First Alpha
+```
