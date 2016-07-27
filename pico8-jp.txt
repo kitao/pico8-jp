@@ -1411,6 +1411,7 @@ dset index value
     Fixed: cstore() saving edited code
     Fixed: audio pop between patterns during music playback
 
+
   v0.1.7
 
     Added: menuitem()
@@ -1471,9 +1472,11 @@ dset index value
     Fixed: International character entry inserting extra characters
     Fixed: Lines with tabs have broken cursor placement and display boundary
 
+
   v0.1.4b
 
     Fixed: OSX command-key combinations broken
+
 
   v0.1.4
 
@@ -1518,6 +1521,7 @@ dset index value
     Fixed: music pattern finished too early when all tracks set to looping
     Fixed: peek()ing odd bytes in sfx address space masks bit 7
     Fixed: cstore and reload from code space should have no effect
+
 
   v0.1.2
 
