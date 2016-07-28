@@ -1,6 +1,6 @@
 # pico8-jp
 
-This is a Japanese version of the [PICO-8](http://www.lexaloffle.com/pico-8.php) official manual (pico8.txt).
+Japanese version of the [PICO-8](http://www.lexaloffle.com/pico-8.php) official manual (pico8.txt).
 
 ## PICO-8 日本語版マニュアル
 
