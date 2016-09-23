@@ -4,8 +4,7 @@ Japanese version of the [PICO-8](http://www.lexaloffle.com/pico-8.php) official 
 
 ## PICO-8 日本語版マニュアル
 
-[PICO-8](http://www.lexaloffle.com/pico-8.php)はほどよい制約のある、シンプルかつユニークな、素敵なプログラム環境です。
-
+[PICO-8](http://www.lexaloffle.com/pico-8.php)は小さなゲームやプログラムを作って、共有したり、プレイするための架空のゲーム機です。
 ![PICO-8](http://www.lexaloffle.com/gfx/p8_jelpi.gif)
 ![PICO-8](http://www.lexaloffle.com/gfx/p8_tracker.gif)
 
