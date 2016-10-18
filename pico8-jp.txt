@@ -171,7 +171,7 @@ PICO-8へようこそ！
 
     -width n             ウィンドウの幅を指定します
     -height n            ウィンドウの高さを指定します
-    -windowed n          0なら全画面モードで、1ならウィンドウモードで起動します
+    -windowed n          0なら全画面モード、1ならウィンドウモードで起動します
     -sound n             音量を指定します(0-256)
     -music n             音量を指定します(0-256)
     -joystick n          ジョイスティックの割り当てをプレイヤー番号nから開始しま
@@ -180,8 +180,8 @@ PICO-8へようこそ！
                          (デフォルトは1)
     -draw_rect x,y,w,h   PICO-8の画面を描画するウィンドウの座標とサイズを指定し
                          ます
-    -run filename        起動時にfilename.p8を読み込み開始します
-    -splore              SPLOREモードで起動します
+    -run filename        起動時にfilename.p8を読み込み実行します
+    -splore              起動時にSPLOREを実行します
     -home path           config.txtやユーザーデータの参照フォルダを指定します
     -desktop path        スクリーンショットとアニメGIFの保存フォルダを指定します
     -screenshot_scale n  スクリーンショットの拡大率を指定します
