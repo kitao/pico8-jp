@@ -1,6 +1,6 @@
 ================================================================================
 
-  PICO-8 v0.1.9b
+  PICO-8 v0.1.10
   http://www.pico-8.com
   (c) Copyright 2014-2016 Lexaloffle Games LLP
   Author: Joseph White // hey@lexaloffle.com
@@ -239,6 +239,19 @@ PICO-8へようこそ！
       プレイ画面の幅と高さは変更可能ですが、表示されるcanvasのサイズと一致してい
       る必要があることに注意してください。(デフォルトのサイズは580x540)
 
+      EXPORTに指定することで16カートリッジまでまとめることができます。
+      
+      EXPORT FOO.HTML DAT1.P8 DAT2.P8 GAME2.P8
+      
+      実行中、ローカルファイルと同じように追加カートリッジにアクセスすることがで
+      きます。
+      
+      RELOAD(0,0,0x2000,"DAT1.P8") -- DAT1.P8からスプライトシートを読み込みます
+      LOAD("GAME2.P8") -- 別のカートリッジを読み込み実行します
+      
+      .p8ファイルのみ対応しており、ファイル名には拡張子.p8が含まれている必要があ
+      ります。
+
 
 :: スクリーンショット、動画、カートリッジラベル
 
@@ -349,6 +362,10 @@ PICO-8へようこそ！
   - CTRL-Gで最後の検索を繰り返します
   - CTRL-UP、DOWNでプログラムの先頭と終端に移動します
   - ALT-UP、DOWNで直前と直後の関数に移動します
+  - CTRL-LEFT、RIGHTで直前と直後の単語に移動します
+  - CTRL-Dで現在の行を複製します
+  - TABで選択範囲をインデントします
+    (シフトキーを押しているとインデントを取り消します)
 
   コードエディターの右下で使用されているトークン数を確認することができます。1つ
   のプログラムは最大8192トークンを使用できます。各トークンは単語(変数名等)または
@@ -356,7 +373,8 @@ PICO-8へようこそ！
   ピリオド、LOCALキーワード、セミコロン、ENDキーワード、コメントはカウントされま
   せん。
 
-  ボタン用の特殊文字はSHIFT-L、R、U、D、O、Xで入力できます。
+  ボタン用の特殊文字はSHIFT-L、R、U、D、O、Xを押すか、CTRL-Kでグリフモードに切り
+  替えることで入力できます。
 
 
 :: スプライトエディター
@@ -812,6 +830,18 @@ PICO-8へようこそ！
 
     16-19: チャンネル0-3で再生中のSFX番号
     20-23: チャンネル0-3で再生中のノート番号(0-31)
+
+
+  extcmd x
+  
+    Special system command, only works when running a local cart. 
+    特別なシステム命令で、ローカルカットリッジ実行中のみ機能します。
+    xは文字列で、以下を指定できます。
+    
+    "label"  カートリッジのラベルを指定します
+    "screen" スクリーンショットを保存します
+    "rec"    動画の録画を開始します
+    "video"  アニメGIFを保存します
 
 
 --------------------------------------------------------------------------------
@@ -1462,6 +1492,30 @@ PICO-8へようこそ！
 --------------------------------------------------------------------------------
   バージョン履歴
 --------------------------------------------------------------------------------
+
+  v0.1.10
+  
+    Added: Multi-cart export in html
+    Added: Cart reset glitch
+    Added: Demo carts: bounce, sort
+    Added: .p8 format can now store cart labels
+    Added: Splore navigation keys: pageup/down, home, end
+    Added: Splore useage hint shown on empty favourites list
+    Added: Warning on boot when data folder is read-only or can't be created
+    Added: Pressing tab with code selected indents those lines (shift-tab to un-indent)
+    Added: Double click word to select it
+    Added: Trigger screenshot/video/label capture from inside program: extcmd()
+    Changed: CTRL+left/right in code editor skips to end of word or span of non-whitespace
+    Changed: When a cart terminates from splore, button press is required to continue
+    Changed: load("@clip") can only be called from commandline (security)
+    Fixed: Can over-allocate host memory if exceed it within one frame
+    Fixed: atan2(-1, -32768) crash, and error for small values of dy
+    Fixed: (Web) using cstore() on self causes unloadable cart (bug introduced in 0.1.8?)
+    Fixed: (web) Pressing ctrl-v crashes the player (should do nothing)
+    Fixed: (Raspberry Pi) WiringPi library required in static build
+    Fixed: (Raspberry Pi) Crash on exit when launching via desktop icon
+    Fixed: (Raspberry Pi) keyboard input broken (observed on raspi2s)
+
 
   v0.1.9b
 
