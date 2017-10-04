@@ -1,6 +1,6 @@
 ================================================================================
 
-  PICO-8 v0.1.10
+  PICO-8 v0.1.10c
   http://www.pico-8.com
   (c) Copyright 2014-2016 Lexaloffle Games LLP
   Author: Joseph White // hey@lexaloffle.com
@@ -1492,6 +1492,18 @@ PICO-8へようこそ！
 --------------------------------------------------------------------------------
   バージョン履歴
 --------------------------------------------------------------------------------
+
+	v0.1.10c
+		Fixed: atan flips sign for very negative values of x close to zero
+
+
+	v0.1.10b
+		Fixed: HTML exporter carts don't run
+		Fixed: HTML export 60fps support broken
+		Fixed: HTML export when path has a space in it (common for OSX)
+		Fixed: atan2 ignores sign of y
+		Fixed: (Raspberry Pi) Crash when access gpio not as root
+
 
   v0.1.10
   
