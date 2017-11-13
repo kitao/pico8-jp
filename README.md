@@ -13,5 +13,5 @@ PICO-8はBASICでゲームを自作していた世代として楽しめるのは
 
 しかし、残念ながら日本語のマニュアルは存在しないため、公式マニュアル([pico8.txt](https://www.lexaloffle.com/pico-8.php?page=manual))を翻訳してみることにしました。
 
-- [PICO-8 v0.1.11d 日本語版マニュアル](https://kitao.github.io/pico8-jp/pico8-jp.txt)
+- [PICO-8 v0.1.11d 日本語版マニュアル](https://github.com/kitao/pico8-jp/blob/master/pico8-jp.txt)
 - [PICO-8 API 早見表](https://kitao.github.io/pico8-api-jp/)
