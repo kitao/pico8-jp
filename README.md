@@ -9,7 +9,7 @@ Japanese version of the [PICO-8](http://www.lexaloffle.com/pico-8.php) official 
 ![PICO-8](http://www.lexaloffle.com/gfx/p8_jelpi.gif)
 ![PICO-8](http://www.lexaloffle.com/gfx/p8_tracker.gif)
 
-古き良き時代に、BASICでゲームを自作していた世代として楽しめるのはもちろんですが、子供達のプログラミング学習環境としても大きな可能性があると感じています。
+BASICでゲームを自作していた世代として楽しめるのはもちろんですが、子供達のプログラミング学習環境としても大きな可能性があると感じています。
 
 しかし、残念ながら日本語の公式マニュアルは存在しないため、公式マニュアル([pico8.txt](http://www.lexaloffle.com/pico-8.php?page=manual))を翻訳してみました。
 
